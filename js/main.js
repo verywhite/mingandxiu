@@ -2,11 +2,38 @@ $(function () {
     'use strict';
     $("[data-toggle='tooltip']").tooltip();
     $('[data-toggle="popover"]').popover();
+    var setConfig = {
+
+        song : [
+            {
+
+                title : 'china',
+                src : 'http://jq22com.qiniudn.com/jq22m1.mp3',
+                cover : 'images/001.png'
+            },
+            {
+
+                title : '笑脸',
+                src : 'http://jq22.qiniudn.com/2_01.mp3',
+                cover : 'images/002.png'
+            }
+        ],
+        error : function(meg){
+
+            console.log(meg);
+        }
+    };
+    var audioFn = audioPlay(setConfig);
+
+    if(audioFn){
+
+        //开始加载音频,true为播放,false不播放
+        audioFn.loadFile(1);
+    }
 })
 
 
 function scroll(){
-    //console.log("打印log日志");实时看下效果
     console.log(document.body.scrollHeight);
     console.log(window.innerHeight)
     console.log(document.documentElement.scrollTop);
@@ -53,6 +80,7 @@ var swiper = new Swiper('.swiper-container', {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
+    spaceBetween: 30,
     coverflowEffect: {
       rotate: 50,
       stretch: 0,
@@ -69,4 +97,4 @@ var swiper = new Swiper('.swiper-container', {
     },
   });
 
-    
+
