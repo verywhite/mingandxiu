@@ -1,3 +1,11 @@
+function reurl(){
+    url = location.href; //把当前页面的地址赋给变量 url
+    var times = url.split("?"); //分切变量 url 分隔符号为 "?"
+    if(times[1] != 1){ //如果?后的值不等于1表示没有刷新
+    url += "?1"; //把变量 url 的值加入 ?1
+    self.location.replace(url); //刷新页面
+    }
+    }
 $(function () {
     'use strict';
     $("[data-toggle='tooltip']").tooltip();
@@ -8,7 +16,7 @@ $(function () {
             {
 
                 title : 'china',
-                src : 'http://jq22com.qiniudn.com/jq22m1.mp3',
+                src : 'music/lucky.mp3',
                 cover : 'images/001.png'
             },
             {
@@ -24,27 +32,30 @@ $(function () {
         }
     };
     var audioFn = audioPlay(setConfig);
-
     if(audioFn){
 
         //开始加载音频,true为播放,false不播放
-        audioFn.loadFile(1);
-    }
+        audioFn.loadFile(true);
+     }
+    //  setTimeout(function(){location.reload()},1000); 
+    
 })
 
 
-function scroll(){
-    console.log(document.body.scrollHeight);
-    console.log(window.innerHeight)
-    console.log(document.documentElement.scrollTop);
-    let scrollHeight=document.body.scrollHeight;
-    let innerHeight=window.innerHeight;
-    let scrollTop=document.documentElement.scrollTop;
-    let progressNum=scrollTop/(scrollHeight-innerHeight)*100;
-    let progressProject=document.getElementById("progress-bottom");
-    console.log(progressProject);
-    progressProject.style.width=progressNum+'%';
-}
+
+
+// function scroll(){
+//     console.log(document.body.scrollHeight);
+//     console.log(window.innerHeight)
+//     console.log(document.documentElement.scrollTop);
+//     let scrollHeight=document.body.scrollHeight;
+//     let innerHeight=window.innerHeight;
+//     let scrollTop=document.documentElement.scrollTop;
+//     let progressNum=scrollTop/(scrollHeight-innerHeight)*100;
+//     let progressProject=document.getElementById("progress-bottom");
+//     console.log(progressProject);
+//     progressProject.style.width=progressNum+'%';
+// }
 var scrollFunc = function (e) {  
     e = e || window.event;  
     if (e.wheelDelta) {  //第一步：先判断浏览器IE，谷歌滑轮事件               

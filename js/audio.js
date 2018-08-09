@@ -286,6 +286,7 @@
 
 			//是否播放
 			fn.play(playStatus);
+			
 		}
 
 		//刷新进度
@@ -461,5 +462,4 @@
 
 		return twoNum(~~(n / 60)) + ':' + twoNum(~~(n % 60));
 	}
-
 })(window,document)

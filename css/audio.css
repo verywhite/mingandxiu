@@ -19,6 +19,7 @@ body{
 	left: 0;
 	background-color: #121212;
 	color: #fafafa;
+	z-index:999999;
 }
 .audio-container{
 	width: 1000px;
