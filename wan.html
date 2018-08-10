@@ -1,160 +1,112 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/swiper.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/audio.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/base.css" />
-	<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
-    
+    <link rel="stylesheet" href="css/base.css">
 
-    <title>万理明网站</title>
-    
+	<!-- <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script> -->
+    <title>傻妞，生日快乐！</title>  
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="80" onscroll="scroll()">
-    
-     
-   
+<body>
+        <embed src="music/mimi.mp3" hidden="true" autostart='true'/>
+        
     <canvas id="sakura" width="1821" height="854" style="position:absolute;z-index:-2;"></canvas>
 
-    <header>
-        <div class="container">
-            <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style='background:#FFE4C4;'>
-                <!-- Brand -->
+    <div class="container">
+        <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style='background:#FFE4C4;'>
+            <a class="navbar-brand" href="#">
+                <img style="width:45px;height:45px;" src="images/logo.png">
+            </a>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section1">2015</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section1">2016</a>
+                    </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">2017</a>
+                    </li>
 
-                <!-- Toggler/collapsibe Button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img style="width:45px;height:45px;" src="images/logo.png">
-                </a>
-                <!-- Navbar links -->
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section1">2016</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#">2017</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section3">2018</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <div class="myheader text-dark text-center">
-            <h1 class="display-3  py-5">万理明个人网站</h1>
-            <a href="https://blog.csdn.net/qq_37959401" target="_blank" class="btn btn-primary btn-lg">CSDN</a>
-            <a href="https://github.com/verywhite" target="_blank" class="btn btn-danger btn-lg">github</a>
-        </div>
-    </header>
-    <section id="section8" class="py-5">
-        <div class="swiper-container">
-                <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-image:url(images/sha.png)"></div>
-                        <div class="swiper-slide" style="background-image:url(images/niu.png)"></div>
-                        <div class="swiper-slide" style="background-image:url(images/sheng.png)"></div>
-                        <div class="swiper-slide" style="background-image:url(images/ri.png)"></div>
-                        <div class="swiper-slide" style="background-image:url(images/kuai.png)"></div>
-                        <div class="swiper-slide" style="background-image:url(images/le.png)"></div>
-                        
-                      </div>
-                      <!-- Add Pagination -->
-                      <div class="swiper-pagination"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section3">2018</a>
+                    </li>
+                </ul>
             </div>
-</section>
+        </nav>
+    </div>
+    <div class="myheader text-dark text-center">
+        <h1 class="display-3  py-5">万理明个人网站</h1>
+    </div>
 
-
-        
-		
-			<div class="grid">
-				<div class="grid__item theme-2">
-					<button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
-					<button class="particles-button">Upload</button>
-				</div>
-				<div class="grid__item theme-4">
-					<button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
-					<button class="particles-button">Submit</button>
-				</div>
-				<div class="grid__item theme-5">
-					<button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
-					<button class="particles-button">refresh</button>
-				</div>
-				<div class="grid__item theme-8">
-					<button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
-					<button class="particles-button">Logout</button>
-                </div>
-                
-				
-			</div>
-		
-    
-
-        
-
-       
-        <!-- 底部进度条 -->
-        <!-- <section id="section4">
-            <div id="progress-bottom" class="progress-bar progress-bar-striped progress-bar-animated" style="width:0;height:10px;"></div>
-        </section> -->
-
-
-        <div class="audio-box">
-            <div class="audio-container">
-    
-                <div class="audio-view">
-                    <div class="audio-cover"></div>
-                    <div class="audio-body">
-                        <h3 class="audio-title">未知歌曲</h3>
-                        <div class="audio-backs">
-                            <div class="audio-this-time">00:00</div>
-                            <div class="audio-count-time">00:00</div>
-                            <div class="audio-setbacks">
-                                <i class="audio-this-setbacks">
-                                    <span class="audio-backs-btn"></span>
-                                </i>
-                                <span class="audio-cache-setbacks">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="audio-btn">
-                        <div class="audio-select">
-                            <div action="prev" class="icon-fast-backward"></div>
-                            <div action="play" data-on="icon-play" data-off="icon-pause" class="icon-play"></div>
-                            <div action="next" class="icon-fast-forward"></div>
-                            
-                            <div action="volume" class="icon-volume-up">
-                                <div class="audio-set-volume">
-                                    <div class="volume-box">
-                                        <i><span  class="audio-backs-btn"></span></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(images/sha.png)"></div>
+            <div class="swiper-slide" style="background-image:url(images/niu.png)"></div>
+            <div class="swiper-slide" style="background-image:url(images/sheng.png)"></div>
+            <div class="swiper-slide" style="background-image:url(images/ri.png)"></div>
+            <div class="swiper-slide" style="background-image:url(images/kuai.png)"></div>
+            <div class="swiper-slide" style="background-image:url(images/le.png)"></div>
         </div>
+        <div class="swiper-pagination"></div>
+    </div>
 
 
+    <div class="grid">
+        <div data-year='2015' class="grid__item theme-2">
+            <button class="action">
+                <svg class="icon icon--rewind">
+                    <use xlink:href="#icon-rewind"></use>
+                </svg>
+            </button>
+            <button class="particles-button">2015</button>
+        </div>
+        <div data-year='2016' class="grid__item theme-4">
+            <button class="action">
+                <svg class="icon icon--rewind">
+                    <use xlink:href="#icon-rewind"></use>
+                </svg>
+            </button>
+            <button class="particles-button">2016</button>
+        </div>
+        <div data-year='2017' class="grid__item theme-5">
+            <button class="action">
+                <svg class="icon icon--rewind">
+                    <use xlink:href="#icon-rewind"></use>
+                </svg>
+            </button>
+            <button class="particles-button">2017</button>
+        </div>
+        <div data-year='2018' class="grid__item theme-8">
+            <button class="action">
+                <svg class="icon icon--rewind">
+                    <use xlink:href="#icon-rewind"></use>
+                </svg>
+            </button>
+            <button class="particles-button">2018</button>
+        </div>
+    </div>
 
-    <!-- <script id="sakura_point_vsh" type="x-shader/x_vertex">
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="dist/js/swiper.min.js"></script>
+    <script src='js/anime.min.js'></script>
+    <script src='js/particles.js'></script>
+    <script src='js/demo.js'></script>
+    <script src='js/prefixfree.min.js'></script>
+    <script src='js/stopExecutionOnTimeout.js'></script>
+    <script src="js/main.js"></script>
+</body>
+ <!-- <script id="sakura_point_vsh" type="x-shader/x_vertex">
 
         uniform mat4 uProjection;
         
@@ -2320,19 +2272,7 @@
         })(window, 'equestAnimationFrame');
         
         </script> -->
-</body>
 
-<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="dist/js/swiper.min.js"></script>
-    <script src='js/anime.min.js'></script>
-    <script src='js/particles.js'></script>
-    <script src='js/demo.js'></script>
-    <script type="text/javascript" src="js/audio.js"></script>
-    <script src="js/main.js"></script>
 
     
 

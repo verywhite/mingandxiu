@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>2015</title>
+	<link rel="stylesheet" href="css/style.css">
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+		<div class="stars">
+  		
+			</div>
+	<ul>
+	  <li class="front">Front</li>
+	  <li class="back">Back</li>
+	  <li class="bottom">Bottom</li>
+	  <li class="right">Right</li>
+	  <li class="left">Left</li>
+	  <li class="top">Top</li>
+	</ul>
+	<div class="container">
+	  <div class="inner">
+	    <div class="sub front"></div>
+	    <div class="sub left"></div>
+	    <div class="sub right"></div>
+	    <div class="sub back"></div>
+	    <div class="sub top"></div>
+	    <div class="sub bottom"></div>
+	    
+	    <div class="smallCube">
+	      <div class="side front"><div style="background-image:url(img/first-citadel-hero-bg.jpg);"></div></div>
+	      <div class="side left"><div style="background-image:url(img/2560x14404ae8.jpg);"></div></div>
+	      <div class="side right"><div style="background-image:url(img/SKINsPromotionalImage.jpg);"></div></div>
+	      <div class="side back"><div style="background-image:url(img/ShipSkin_MatiguSeabeast_Caldari.jpg);"></div></div>
+	      <div class="side top"><div style="background-image:url(img/Structure_Assault_Mechanics.jpg);"></div></div>
+	      <div class="side bottom"><div style="background-image:url(img/emerging.jpg);"></div></div>
+	    </div>
+	  </div>
+	</div>
+	
+	<embed src="music/mimi.mp3" hidden="true"/>
+
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-3.1.1.min.js"><\/script>')</script>
+	<script src="js/index.js"></script>
+	<script src='js/prefixfree.min.js'></script>
+	<script src='js/stopExecutionOnTimeout.js'></script>
+	<script>
+			$(document).ready(function () {
+					var stars = 800;
+					var $stars = $('.stars');
+					var r = 800;
+					for (var i = 0; i < stars; i++) {
+							if (window.CP.shouldStopExecution(1)) {
+									break;
+							}
+							var $star = $('<div/>').addClass('star');
+							$stars.append($star);
+					}
+					window.CP.exitedLoop(1);
+					$('.star').each(function () {
+							var cur = $(this);
+							var s = 0.2 + Math.random() * 1;
+							var curR = r + Math.random() * 300;
+							cur.css({
+									transformOrigin: '0 0 ' + curR + 'px',
+									transform: ' translate3d(0,0,-' + curR + 'px) rotateY(' + Math.random() * 360 + 'deg) rotateX(' + Math.random() * -50 + 'deg) scale(' + s + ',' + s + ')'
+							});
+					});
+			});
+		
+			</script>
+</body>
+</html>

@@ -225,7 +225,6 @@ main {
 	border: var(--border-button);
 	margin: 0;
 	padding: 1.5rem 3rem;
-	padding: var(--button-padding);
 }
 
 .particles-button:focus {

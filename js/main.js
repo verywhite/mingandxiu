@@ -1,43 +1,37 @@
-function reurl(){
-    url = location.href; //把当前页面的地址赋给变量 url
-    var times = url.split("?"); //分切变量 url 分隔符号为 "?"
-    if(times[1] != 1){ //如果?后的值不等于1表示没有刷新
-    url += "?1"; //把变量 url 的值加入 ?1
-    self.location.replace(url); //刷新页面
-    }
-    }
+
 $(function () {
-    'use strict';
-    $("[data-toggle='tooltip']").tooltip();
-    $('[data-toggle="popover"]').popover();
-    var setConfig = {
+    // 'use strict';
+    // $("[data-toggle='tooltip']").tooltip();
+    // $('[data-toggle="popover"]').popover();
+    // var setConfig = {
 
-        song : [
-            {
+    //     song : [
+    //         {
 
-                title : 'china',
-                src : 'music/lucky.mp3',
-                cover : 'images/001.png'
-            },
-            {
+    //             title : 'china',
+    //             src : 'music/lucky.mp3',
+    //             cover : 'images/001.png'
+    //         },
+    //         {
 
-                title : '笑脸',
-                src : 'http://jq22.qiniudn.com/2_01.mp3',
-                cover : 'images/002.png'
-            }
-        ],
-        error : function(meg){
+    //             title : '笑脸',
+    //             src : 'http://jq22.qiniudn.com/2_01.mp3',
+    //             cover : 'images/002.png'
+    //         }
+    //     ],
+    //     error : function(meg){
 
-            console.log(meg);
-        }
-    };
-    var audioFn = audioPlay(setConfig);
-    if(audioFn){
+    //         console.log(meg);
+    //     }
+    // };
+    // var audioFn = audioPlay(setConfig);
+    // if(audioFn){
 
-        //开始加载音频,true为播放,false不播放
-        audioFn.loadFile(true);
-     }
-    //  setTimeout(function(){location.reload()},1000); 
+    //     //开始加载音频,true为播放,false不播放
+    //     audioFn.loadFile(true);
+    //  }
+   
+
     
 })
 
@@ -109,3 +103,22 @@ var swiper = new Swiper('.swiper-container', {
   });
 
 
+//   点击跳转
+$('.grid__item').on('click',function(e){
+    console.log(e);
+    let year=e.currentTarget.dataset.year;
+    setTimeout(function(){
+    if(year==='2015'){
+        window.location.href='2015.html';
+    }
+    else if(year==='2016'){
+        window.location.href='2016.html';
+    }
+    else if(year==='2017'){
+        window.location.href='2017.html';
+    }
+    else{
+        window.location.href='2018.html';
+    }
+    },2000)
+})
