@@ -1,0 +1,941 @@
+<!DOCTYPE>
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>2017</title>
+
+<style type="text/css">
+
+
+	*{margin:0; padding:0;}
+		body{ 	}
+
+	#screen {
+
+		position: absolute;
+
+		left: 10%;
+
+		top: 10%;
+
+		width: 80%;
+
+		height: 80%;
+
+
+	}
+
+	#screen img {
+
+		position: absolute;
+
+		cursor: pointer;
+
+		visibility: hidden;
+
+		width: 0px;
+
+		height: 0px;
+
+	}
+
+	#screen .tvover {
+
+		border: solid #876;
+
+		opacity: 1;
+
+		filter: alpha(opacity=100);
+
+	}
+
+	#screen .tvout {
+
+		border: solid #fff;
+
+		opacity: 0.7;
+
+	}
+
+	#bankImages {
+
+		display: none;
+
+	}
+
+</style>
+
+
+
+<script type="text/javascript">
+
+var Library = {};
+
+Library.ease = function () {
+
+	this.target = 0;
+
+	this.position = 0;
+
+	this.move = function (target, speed)
+
+	{
+
+		this.position += (target - this.position) * speed;
+
+	}
+
+}
+
+
+
+var tv = {
+
+	/* ==== variables ==== */
+
+	O : [],
+
+	screen : {},
+
+	grid : {
+
+		size       : 4,  // 4x4 grid
+
+		borderSize : 6,  // borders size
+
+		zoomed     : false
+
+	},
+
+	angle : {
+
+		x : new Library.ease(),
+
+		y : new Library.ease()
+
+	},
+
+	camera : {
+
+		x    : new Library.ease(),
+
+		y    : new Library.ease(),
+
+		zoom : new Library.ease(),
+
+		focalLength : 750 // camera Focal Length
+
+	},
+
+
+
+	/* ==== init script ==== */
+
+	init : function ()
+
+	{
+
+		this.screen.obj = document.getElementById('screen');
+
+		var img = document.getElementById('bankImages').getElementsByTagName('img');
+
+		this.screen.obj.onselectstart = function () { return false; }
+
+		this.screen.obj.ondrag        = function () { return false; }
+
+		/* ==== create images grid ==== */
+
+		var ni = 0;
+
+		var n = (tv.grid.size / 2) - .5;
+
+		for (var y = -n; y <= n; y++)
+
+		{
+
+			for (var x = -n; x <= n; x++)
+
+			{
+
+				/* ==== create HTML image element ==== */
+
+				var o = document.createElement('img');
+
+				var i = img[(ni++) % img.length];
+
+				o.className = 'tvout';
+
+				o.src = i.src;
+
+				tv.screen.obj.appendChild(o);
+
+				/* ==== 3D coordinates ==== */
+
+				o.point3D = {
+
+					x  : x,
+
+					y  : y,
+
+					z  : new Library.ease()
+
+				};
+
+				/* ==== push object ==== */
+
+				o.point2D = {};
+
+				o.ratioImage = 1;
+
+				tv.O.push(o);
+
+				/* ==== on mouse over event ==== */
+
+				o.onmouseover = function ()
+
+				{
+
+					if (!tv.grid.zoomed)
+
+					{
+
+						if (tv.o)
+
+						{
+
+							/* ==== mouse out ==== */
+
+							tv.o.point3D.z.target = 0;
+
+							tv.o.className = 'tvout';
+
+						}
+
+						/* ==== mouse over ==== */
+
+						this.className = 'tvover';
+
+						this.point3D.z.target = -.5;
+
+						tv.o = this;
+
+					}
+
+				}
+
+				/* ==== on click event ==== */
+
+				o.onclick = function ()
+
+				{
+
+					if (!tv.grid.zoomed)
+
+					{
+
+						/* ==== zoom in ==== */
+
+						tv.camera.x.target = this.point3D.x;
+
+						tv.camera.y.target = this.point3D.y;
+
+						tv.camera.zoom.target = tv.screen.w * 1.25;
+
+						tv.grid.zoomed = this;
+
+					} else {
+
+						if (this == tv.grid.zoomed){
+
+							/* ==== zoom out ==== */
+
+							tv.camera.x.target = 0;
+
+							tv.camera.y.target = 0;
+
+							tv.camera.zoom.target = tv.screen.w / (tv.grid.size + .1);
+
+							tv.grid.zoomed = false;
+
+						}
+
+					}
+
+				}
+
+				/* ==== 3D transform function ==== */
+
+				o.calc = function ()
+
+				{
+
+					/* ==== ease mouseover ==== */
+
+					this.point3D.z.move(this.point3D.z.target, .5);
+
+					/* ==== assign 3D coords ==== */
+
+					var x = (this.point3D.x - tv.camera.x.position) * tv.camera.zoom.position;
+
+					var y = (this.point3D.y - tv.camera.y.position) * tv.camera.zoom.position;
+
+					var z = this.point3D.z.position * tv.camera.zoom.position;
+
+					/* ==== perform rotations ==== */
+
+					var xy = tv.angle.cx * y  - tv.angle.sx * z;
+
+					var xz = tv.angle.sx * y  + tv.angle.cx * z;
+
+					var yz = tv.angle.cy * xz - tv.angle.sy * x;
+
+					var yx = tv.angle.sy * xz + tv.angle.cy * x;
+
+					/* ==== 2D transformation ==== */
+
+					this.point2D.scale = tv.camera.focalLength / (tv.camera.focalLength + yz);
+
+					this.point2D.x = yx * this.point2D.scale;
+
+					this.point2D.y = xy * this.point2D.scale;
+
+					this.point2D.w = Math.round(
+
+					                   Math.max(
+
+					                     0,
+
+					                     this.point2D.scale * tv.camera.zoom.position * .8
+
+					                   )
+
+					                 );
+
+					/* ==== image size ratio ==== */
+
+					if (this.ratioImage > 1)
+
+						this.point2D.h = Math.round(this.point2D.w / this.ratioImage);
+
+					else
+
+					{
+
+						this.point2D.h = this.point2D.w;
+
+						this.point2D.w = Math.round(this.point2D.h * this.ratioImage);
+
+					}
+
+				}
+
+				/* ==== rendering ==== */
+
+				o.draw = function ()
+
+				{
+
+					if (this.complete)
+
+					{
+
+						/* ==== paranoid image load ==== */
+
+						if (!this.loaded)
+
+						{
+
+							if (!this.img)
+
+							{
+
+								/* ==== create internal image ==== */
+
+								this.img = new Image();
+
+								this.img.src = this.src;
+
+							}
+
+							if (this.img.complete)
+
+							{
+
+								/* ==== get width / height ratio ==== */
+
+								this.style.visibility = 'visible';
+
+								this.ratioImage = this.img.width / this.img.height;
+
+								this.loaded = true;
+
+								this.img = false;
+
+							}
+
+						}
+
+						/* ==== HTML rendering ==== */
+
+						this.style.left = Math.round(
+
+						                    this.point2D.x * this.point2D.scale +
+
+						                    tv.screen.w - this.point2D.w * .5
+
+						                  ) + 'px';
+
+						this.style.top  = Math.round(
+
+						                    this.point2D.y * this.point2D.scale +
+
+						                    tv.screen.h - this.point2D.h * .5
+
+						                  ) + 'px';
+
+						this.style.width  = this.point2D.w + 'px';
+
+						this.style.height = this.point2D.h + 'px';
+
+						this.style.borderWidth = Math.round(
+
+						                           Math.max(
+
+						                             this.point2D.w,
+
+						                             this.point2D.h
+
+						                           ) * tv.grid.borderSize * .01
+
+						                         ) + 'px';
+
+						this.style.zIndex = Math.floor(this.point2D.scale * 100);
+
+					}
+
+				}
+
+			}
+
+		}
+
+		/* ==== start script ==== */
+
+		tv.resize();
+
+		mouse.y = tv.screen.y + tv.screen.h;
+
+		mouse.x = tv.screen.x + tv.screen.w;
+
+		tv.run();
+
+	},
+
+
+
+	/* ==== resize window ==== */
+
+	resize : function ()
+
+	{
+
+		var o = tv.screen.obj;
+
+		tv.screen.w = o.offsetWidth / 2;
+
+		tv.screen.h = o.offsetHeight / 2;
+
+		tv.camera.zoom.target = tv.screen.w / (tv.grid.size + .1);
+
+		for (tv.screen.x = 0, tv.screen.y = 0; o != null; o = o.offsetParent)
+
+		{
+
+			tv.screen.x += o.offsetLeft;
+
+			tv.screen.y += o.offsetTop;
+
+		}
+
+	},
+
+
+
+	/* ==== main loop ==== */
+
+	run : function ()
+
+	{
+
+		/* ==== motion ease ==== */
+
+		tv.angle.x.move(-(mouse.y - tv.screen.h - tv.screen.y) * .0025, .1);
+
+		tv.angle.y.move( (mouse.x - tv.screen.w - tv.screen.x) * .0025, .1);
+
+		tv.camera.x.move(tv.camera.x.target, tv.grid.zoomed ? .25 : .025);
+
+		tv.camera.y.move(tv.camera.y.target, tv.grid.zoomed ? .25 : .025);
+
+		tv.camera.zoom.move(tv.camera.zoom.target, .05);
+
+		/* ==== angles sin and cos ==== */
+
+		tv.angle.cx = Math.cos(tv.angle.x.position);
+
+		tv.angle.sx = Math.sin(tv.angle.x.position);
+
+		tv.angle.cy = Math.cos(tv.angle.y.position);
+
+		tv.angle.sy = Math.sin(tv.angle.y.position);
+
+		/* ==== loop through all images ==== */
+
+		for (var i = 0, o; o = tv.O[i]; i++)
+
+		{
+
+			o.calc();
+
+			o.draw();
+
+		}
+
+		/* ==== loop ==== */
+
+		setTimeout(tv.run, 32);
+
+	}
+
+}
+
+
+
+/* ==== global mouse position ==== */
+
+var mouse = {
+
+	x : 0,
+
+	y : 0
+
+}
+
+document.onmousemove = function(e)
+
+{
+
+	if (window.event) e = window.event;
+
+	mouse.x = e.clientX;
+
+	mouse.y = e.clientY;
+
+	return false;
+
+}
+
+
+
+</script>
+
+
+</head>
+
+
+
+<body>
+
+
+        <canvas width="1366" height="62" style="width: 1366px; height: 62px;">
+
+            </canvas>
+<div id="screen"></div>
+
+
+
+<div id="bankImages">
+
+	<img alt="" src="img/1.jpg">
+
+	<img alt="" src="img/2.jpg">
+
+	<img alt="" src="img/3.jpg">
+
+	<img alt="" src="img/4.jpg">
+
+
+
+	<img alt="" src="img/5.jpg">
+
+	<img alt="" src="img/6.jpg">
+
+	<img alt="" src="img/7.jpg">
+
+	<img alt="" src="img/8.jpg">
+
+
+
+	<img alt="" src="img/9.jpg">
+
+	<img alt="" src="img/10.jpg">
+
+	<img alt="" src="img/11.jpg">
+
+	<img alt="" src="img/12.jpg">
+
+
+
+	<img alt="" src="img/13.jpg">
+
+	<img alt="" src="img/14.jpg">
+
+	<img alt="" src="img/1.jpg">
+
+	<img alt="" src="img/2.jpg">
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+	/* ==== start script ==== */
+
+	onresize = tv.resize;
+
+	tv.init();
+
+</script>
+ <script src="./js/three.min.js"></script>
+
+ <script>        //@remwks
+
+     var SCREEN_WIDTH = window.innerWidth,
+
+             SCREEN_HEIGHT = window.innerHeight,
+
+
+
+         r = 200,
+
+
+
+         mouseX = 0, mouseY = 0,
+
+
+
+         windowHalfX = window.innerWidth / 2,
+
+         windowHalfY = window.innerHeight / 2,
+
+
+
+         camera, scene, renderer;
+
+
+
+     init();
+
+     animate();
+
+
+
+     function init() {
+
+
+
+         var container;
+
+
+
+         container = document.createElement('div');
+
+         document.body.appendChild(container);
+
+
+
+         camera = new THREE.PerspectiveCamera(80, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 3000);
+
+         camera.position.z = 1000;
+
+
+
+         scene = new THREE.Scene();
+
+
+
+         var i, line, vertex1, vertex2, material, p,
+
+                 parameters = [[3.5, 0x90CEBF, 0.5, 1]],
+
+
+
+                 geometry = new THREE.Geometry();
+
+
+
+
+
+         for (i = 0; i < 1500; i++) {
+
+
+
+             var vertex1 = new THREE.Vector3();
+
+             vertex1.x = Math.random() * 2 - 1;
+
+             vertex1.y = Math.random() * 2 - 1;
+
+             vertex1.z = Math.random() * 2 - 1;
+
+             vertex1.normalize();
+
+             vertex1.multiplyScalar(r);
+
+
+
+             vertex2 = vertex1.clone();
+
+             vertex2.multiplyScalar(Math.random() * 0.09 + 1);
+
+
+
+             geometry.vertices.push(vertex1);
+
+             geometry.vertices.push(vertex2);
+
+
+
+         }
+
+
+
+         for (i = 0; i < parameters.length; ++i) {
+
+
+
+             p = parameters[i];
+
+
+
+             material = new THREE.LineBasicMaterial({ color: p[1], opacity: p[2], linewidth: p[3] });
+
+
+
+             line = new THREE.Line(geometry, material, THREE.LinePieces);
+
+             line.scale.x = line.scale.y = line.scale.z = p[0];
+
+             line.originalScale = p[0];
+
+             line.rotation.y = Math.random() * Math.PI;
+
+             line.updateMatrix();
+
+             scene.add(line);
+
+
+
+         }
+
+
+
+         renderer = new THREE.WebGLRenderer({ antialias: true });
+
+         renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+         container.appendChild(renderer.domElement);
+
+
+
+         document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+         document.addEventListener('touchstart', onDocumentTouchStart, false);
+
+         document.addEventListener('touchmove', onDocumentTouchMove, false);
+
+
+
+         //
+
+
+
+         window.addEventListener('resize', onWindowResize, false);
+
+
+
+     }
+
+
+
+     function onWindowResize() {
+
+
+
+         windowHalfX = window.innerWidth / 2;
+
+         windowHalfY = window.innerHeight / 2;
+
+
+
+         camera.aspect = window.innerWidth / window.innerHeight;
+
+         camera.updateProjectionMatrix();
+
+
+
+         renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+
+     }
+
+
+
+     function onDocumentMouseMove(event) {
+
+
+
+         mouseX = event.clientX - windowHalfX;
+
+         mouseY = event.clientY - windowHalfY;
+
+
+
+     }
+
+
+
+     function onDocumentTouchStart(event) {
+
+
+
+         if (event.touches.length > 1) {
+
+
+
+             event.preventDefault();
+
+
+
+             mouseX = event.touches[0].pageX - windowHalfX;
+
+             mouseY = event.touches[0].pageY - windowHalfY;
+
+
+
+         }
+
+
+
+     }
+
+
+
+     function onDocumentTouchMove(event) {
+
+
+
+         if (event.touches.length == 1) {
+
+
+
+             event.preventDefault();
+
+
+
+             mouseX = event.touches[0].pageX - windowHalfX;
+
+             mouseY = event.touches[0].pageY - windowHalfY;
+
+
+
+         }
+
+
+
+     }
+
+
+
+     //
+
+
+
+     function animate() {
+
+
+
+         requestAnimationFrame(animate);
+
+
+
+         render();
+
+
+
+     }
+
+
+
+     function render() {
+
+
+
+         camera.position.y += (-mouseY + 200 - camera.position.y) * .05;
+
+         camera.lookAt(scene.position);
+
+
+
+         renderer.render(scene, camera);
+
+
+
+         var time = Date.now() * 0.0001;
+
+
+
+         for (var i = 0; i < scene.children.length; i++) {
+
+
+
+             var object = scene.children[i];
+
+
+
+             if (object instanceof THREE.Line) {
+
+
+
+                 object.rotation.y = time * (i < 4 ? (i + 1) : -(i + 1));
+
+
+
+
+
+             }
+
+
+
+         }
+
+
+
+     }
+
+     //@ sourceURL=pen.js
+
+ </script>
+
+
+</body>
+
+</html>
+

@@ -54,9 +54,35 @@
 				top:0;
 				
 			}
+			body {
+
+overflow: hidden;
+}
+canvas {
+
+position: absolute;
+top: 0;
+left: 0;
+background-color: black;
+}
+
+a {
+
+width: 200px;
+height: 200px;
+position: absolute;
+left: calc( 100% - 200px );
+top: calc( 100% - 130px );
+}
+img {
+width: 200px;
+}
 		</style>
 	</head>
 	<body>
+		
+<canvas id="c"></canvas>
+<embed src="./music/wodemimi.mp3" hidden="true"/>
 		<div class="box">
 			<div style="transform: rotateY(0deg) translateZ(275px);">
 				<img src="img/1.png" >
@@ -87,4 +113,6 @@
 			</div>					
 		</div>
 	</body>
+	<script src='./js/dat.gui.min.js'></script>
+<script src="./js/indexi.js"></script>
 </html>
