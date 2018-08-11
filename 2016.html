@@ -76,6 +76,7 @@ top: calc( 100% - 130px );
 }
 img {
 width: 200px;
+opacity:0.7;
 }
 		</style>
 	</head>
@@ -85,34 +86,50 @@ width: 200px;
 <embed src="./music/wodemimi.mp3" hidden="true"/>
 		<div class="box">
 			<div style="transform: rotateY(0deg) translateZ(275px);">
-				<img src="img/1.png" >
+				<img src="./images/2016-1.png" >
 			</div>
 			<div style="transform: rotateY(40deg) translateZ(275px);">
-				<img src="img/2.png">
+				<img src="./images/2016-2.png">
 			</div>
 			<div style="transform: rotateY(80deg) translateZ(275px);">
-				<img src="img/3.png">
+				<img src="./images/2016-3.png">
 			</div>
 			<div style="transform: rotateY(120deg) translateZ(275px);">
-				<img src="img/4.png">
+				<img src="./images/2016-4.png">
 			</div>
 			<div style="transform: rotateY(160deg) translateZ(275px);">
-				<img src="img/5.png">
+				<img src="./images/2016-5.png">
 			</div>
 			<div style="transform: rotateY(200deg) translateZ(275px);">
-				<img src="img/6.png">
+				<img src="./images/2016-6.png">
 			</div>
 			<div style="transform: rotateY(240deg) translateZ(275px);">
-				<img src="img/7.png">
+				<img src="./images/2016.png">
 			</div>
 			<div style="transform: rotateY(280deg) translateZ(275px);">
-				<img src="img/8.png">
+				<img src="./images/2016-8.png">
 			</div>
 			<div style="transform: rotateY(320deg) translateZ(275px);">
-				<img src="img/9.png" >
+				<img src="./images/2016-9.png" >
 			</div>					
 		</div>
+		<div id="text" style='position: fixed;width: 200px;height: 100px;left: 0;top: 300px;color: azure;font-size: 20px;'></div>
 	</body>
 	<script src='./js/dat.gui.min.js'></script>
 <script src="./js/indexi.js"></script>
+<script>
+	var i=0;
+			var str="2016年，你就是我心中的秘密，我们之间的距离忽远又忽近，(仔细听背景音乐！)我两的状态也正如这样，这一年，我们在一起了！这一年，你是我女朋友啦！wa wo~!";
+			
+			window.onload=function typing(){
+				//获取div
+				var mydiv=document.getElementById("text");
+				mydiv.innerHTML+=str.charAt(i);
+				i++;
+				var id=setTimeout(typing,400);
+				if(i==str.length){
+					clearTimeout(id);
+				}
+			}
+</script>
 </html>

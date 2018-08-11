@@ -7,7 +7,7 @@
 		<title>2018</title>
 		<style style="text/css">
 			*{margin:0;padding:0;}
-			body{background:url("./images/1.jpg");background-size:cover;}
+			body{background:url("images/1.jpg");background-size:cover;}
 			/*start top*/
 			.top{width:400px;height:100px;margin:60px auto;font-size:30px;font-family:"华文行楷";color:#fff;
 			<!--background:-webkit-linear-gradient(45deg,#ff0000,#ffcc00,#ffff99,#33ccff,#00ff33,#6600ff,#333399);
@@ -38,12 +38,12 @@
 		<div class="box">
 			<div class="pic">
 				<ul>
-					<li><img src="images/1.png" width="" height="" alt=""/></li>
-					<li><img src="images/2.png" width="" height="" alt=""/></li>
-					<li><img src="images/3.png" width="" height="" alt=""/></li>
-					<li><img src="images/4.png" width="" height="" alt=""/></li>
-					<li><img src="images/5.png" width="" height="" alt=""/></li>
-					<li><img src="images/6.png" width="" height="" alt=""/></li>
+					<li><img style='opacity:0.7;'src="images/2018-2.png" width="" height="" alt=""/></li>
+					<li><img style='opacity:0.7;'src="images/2018-3.png" width="" height="" alt=""/></li>
+					<li><img style='opacity:0.7;'src="images/2018-5.png" width="" height="" alt=""/></li>
+					<li><img style='opacity:0.7;'src="images/2018-6.png" width="" height="" alt=""/></li>
+					<li><img style='opacity:0.7;'src="images/2018-9.png" width="" height="" alt=""/></li>
+					<li><img style='opacity:0.7;'src="images/2018-10.png" width="" height="" alt=""/></li>
 				</ul>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 		<div id="text"></div>
 		<!--end text-->
 		<embed src="./music/gaobaiqiqiu.mp3" hidden="true"/>
-		<script src="./js/jquery-1.8.3.min.js"></script>
+		<script src="./js/jquery-1.9.1.min.js"></script>
 		<!--雪花-->
 		<script src="./js/snow.js"></script>
 		<script>
@@ -70,18 +70,18 @@
 			});
 			
 			var i=0;
-			var str="能够遇见你是我最大的幸运，有了你生活变得丰富多彩，有了你，世界变得如此迷人；你是我的世界，我的世界是你，对我来说，不是在最美好的时光遇见了你，而是遇见你后都是最美好的时光！";
+			var str="2018年8月12日，不知不觉在一起快两年啦！这一年那张你流泪的照片，在我心中留下很深的印象，可能你已经忘记这件事了，委屈你了，你最美的年龄给了我，我爱你，傻妞！(回到首页，等等我留的彩蛋吧！)";
 			
 			window.onload=function typing(){
 				//获取div
 				var mydiv=document.getElementById("text");
 				mydiv.innerHTML+=str.charAt(i);
 				i++;
-				var id=setTimeout(typing,100);
+				var id=setTimeout(typing,200);
 				if(i==str.length){
 					clearTimeout(id);
 				}
 			}
 		</script>
 	</body>
-</html>x
+</html>

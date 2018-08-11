@@ -551,58 +551,56 @@ document.onmousemove = function(e)
 <body>
 
 
-        <canvas width="1366" height="62" style="width: 1366px; height: 62px;">
-
-            </canvas>
+       
 <div id="screen"></div>
 
 
 
 <div id="bankImages">
 
-	<img alt="" src="img/1.jpg">
+	<img alt="" src="./images/2017-1.png">
 
-	<img alt="" src="img/2.jpg">
+	<img alt="" src="./images/2017-2.png">
 
-	<img alt="" src="img/3.jpg">
+	<img alt="" src="./images/2017-3.png">
 
-	<img alt="" src="img/4.jpg">
-
-
-
-	<img alt="" src="img/5.jpg">
-
-	<img alt="" src="img/6.jpg">
-
-	<img alt="" src="img/7.jpg">
-
-	<img alt="" src="img/8.jpg">
+	<img alt="" src="./images/2017-4.png">
 
 
 
-	<img alt="" src="img/9.jpg">
+	<img alt="" src="./images/2017-5.png">
 
-	<img alt="" src="img/10.jpg">
+	<img alt="" src="./images/2017-6.png">
 
-	<img alt="" src="img/11.jpg">
+	<img alt="" src="./images/2017-7.png">
 
-	<img alt="" src="img/12.jpg">
+	<img alt="" src="./images/2017-8.png">
 
 
 
-	<img alt="" src="img/13.jpg">
+	<img alt="" src="./images/2017-9.png">
 
-	<img alt="" src="img/14.jpg">
+	<img alt="" src="./images/2017-10.png">
 
-	<img alt="" src="img/1.jpg">
+	<img alt="" src="./images/2017-11.png">
 
-	<img alt="" src="img/2.jpg">
+	<img alt="" src="./images/2017-12.png">
 
+
+
+	<img alt="" src="./images/2017-17.png">
+
+	<img alt="" src="./images/2017-14.png">
+
+	<img alt="" src="./images/2017-15.png">
+
+	<img alt="" src="./images/2017-16.png">
 
 
 </div>
+<div id="text" style='position: fixed;width: 200px;height: 100px;left: 0;top: 300px;color: azure;font-size: 20px;'></div>
 
-
+<embed src="./music/jiushiaini.mp3" hidden="true"/>
 <script type="text/javascript">
 
 	/* ==== start script ==== */
@@ -610,6 +608,19 @@ document.onmousemove = function(e)
 	onresize = tv.resize;
 
 	tv.init();
+	var i=0;
+			var str="2017年，我们欢笑过，争吵过，生气过，开心过，跌跌撞撞地走过这一年，你就是我的生活调味品呐，还挺合我胃口的，就是爱你呦！";
+			
+			window.onload=function typing(){
+				//获取div
+				var mydiv=document.getElementById("text");
+				mydiv.innerHTML+=str.charAt(i);
+				i++;
+				var id=setTimeout(typing,400);
+				if(i==str.length){
+					clearTimeout(id);
+				}
+			}
 
 </script>
  <script src="./js/three.min.js"></script>
@@ -939,3 +950,4 @@ document.onmousemove = function(e)
 
 </html>
 
+  

@@ -14,7 +14,6 @@
 		<div class="stars">
   		
 			</div>
-	<ul>
 	  <li class="front">Front</li>
 	  <li class="back">Back</li>
 	  <li class="bottom">Bottom</li>
@@ -32,16 +31,16 @@
 	    <div class="sub bottom"></div>
 	    
 	    <div class="smallCube">
-	      <div class="side front"><div style="background-image:url(img/first-citadel-hero-bg.jpg);"></div></div>
-	      <div class="side left"><div style="background-image:url(img/2560x14404ae8.jpg);"></div></div>
-	      <div class="side right"><div style="background-image:url(img/SKINsPromotionalImage.jpg);"></div></div>
-	      <div class="side back"><div style="background-image:url(img/ShipSkin_MatiguSeabeast_Caldari.jpg);"></div></div>
-	      <div class="side top"><div style="background-image:url(img/Structure_Assault_Mechanics.jpg);"></div></div>
-	      <div class="side bottom"><div style="background-image:url(img/emerging.jpg);"></div></div>
+	      <div class="side front"><div style="background-image:url(./images/2015-1.png);"></div></div>
+	      <div class="side left"><div style="background-image:url(./images/2015-2.png);"></div></div>
+	      <div class="side right"><div style="background-image:url(./images/2015-3.png);"></div></div>
+	      <div class="side back"><div style="background-image:url(./images/2015-4.png);"></div></div>
+	      <div class="side top"><div style="background-image:url(./images/2015-5.png);"></div></div>
+	      <div class="side bottom"><div style="background-image:url(./images/2015-4.png);"></div></div>
 	    </div>
 	  </div>
 	</div>
-	
+	<div id="text" style='position: fixed;width: 200px;height: 100px;left: 0;top: 300px;color: azure;font-size: 20px;'></div>
 	<embed src="./music/lucky.mp3" hidden="true"/>
 
 	<script src="./js/jquery-3.1.1.min.js"></script>
@@ -73,6 +72,19 @@
 					});
 			});
 		
+			var i=0;
+			var str="2015年，《小幸运》专辑火起来了，也许当时忙着微笑和哭泣，忙着追逐天空中的流星，也许我们当时就是这个状态，毕业那天，我第一次抱你，那一年我们是最好的朋友！那一年我以为我们只能是朋友！";
+			
+			window.onload=function typing(){
+				//获取div
+				var mydiv=document.getElementById("text");
+				mydiv.innerHTML+=str.charAt(i);
+				i++;
+				var id=setTimeout(typing,400);
+				if(i==str.length){
+					clearTimeout(id);
+				}
+			}
 			</script>
 </body>
 </html>

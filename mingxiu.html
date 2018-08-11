@@ -1,2279 +1,464 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./dist/css/swiper.min.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/base.css">
-
-	<!-- <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script> -->
-    <title>傻妞，生日快乐！</title>  
+<meta charset="utf-8">
+<title>傻妞，生日快乐</title>
+<script src="./js/jquery-3.1.1.min.js"></script>
+<style>
+.tb960x90 {
+	display:none!important;
+	display:none
+}
+body {
+	background-color:#232323;
+}
+</style>
 </head>
-
 <body>
-        <embed src="./music/lucky.mp3" hidden="true"/>
-        
-    <canvas id="sakura" width="1821" height="854" style="position:absolute;z-index:-2;"></canvas>
-
-    <div class="container">
-        <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style='background:#FFE4C4;'>
-            <a class="navbar-brand" href="#">
-                <img style="width:45px;height:45px;" src="./images/logo.png">
-            </a>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./2015.html">2015</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./2016.html">2016</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="./2017.html">2017</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="./2018.html">2018</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="myheader text-dark text-center">
-        <h1 class="display-3  py-5">万理明个人网站</h1>
-    </div>
-
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(images/sha.png)"></div>
-            <div class="swiper-slide" style="background-image:url(images/niu.png)"></div>
-            <div class="swiper-slide" style="background-image:url(images/sheng.png)"></div>
-            <div class="swiper-slide" style="background-image:url(images/ri.png)"></div>
-            <div class="swiper-slide" style="background-image:url(images/kuai.png)"></div>
-            <div class="swiper-slide" style="background-image:url(images/le.png)"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-
-
-    <div class="grid">
-        <div data-year='2015' class="grid__item theme-2">
-            <button class="action">
-                <svg class="icon icon--rewind">
-                    <use xlink:href="#icon-rewind"></use>
-                </svg>
-            </button>
-            <button class="particles-button">2015</button>
-        </div>
-        <div data-year='2016' class="grid__item theme-4">
-            <button class="action">
-                <svg class="icon icon--rewind">
-                    <use xlink:href="#icon-rewind"></use>
-                </svg>
-            </button>
-            <button class="particles-button">2016</button>
-        </div>
-        <div data-year='2017' class="grid__item theme-5">
-            <button class="action">
-                <svg class="icon icon--rewind">
-                    <use xlink:href="#icon-rewind"></use>
-                </svg>
-            </button>
-            <button class="particles-button">2017</button>
-        </div>
-        <div data-year='2018' class="grid__item theme-8">
-            <button class="action">
-                <svg class="icon icon--rewind">
-                    <use xlink:href="#icon-rewind"></use>
-                </svg>
-            </button>
-            <button class="particles-button">2018</button>
-        </div>
-    </div>
-
-
-    <script src="./js/jquery-3.1.1.min.js"></script>
-    <script src="./dist/js/swiper.min.js"></script>
-    <script src='./js/anime.min.js'></script>
-    <script src='./js/particles.js'></script>
-    <script src='./js/demo.js'></script>
-    <script src='./js/prefixfree.min.js'></script>
-    <script src='./js/stopExecutionOnTimeout.js'></script>
-    <script src="./js/main.js"></script>
-</body>
- <!-- <script id="sakura_point_vsh" type="x-shader/x_vertex">
-
-        uniform mat4 uProjection;
-        
-        uniform mat4 uModelview;
-        
-        uniform vec3 uResolution;
-        
-        uniform vec3 uOffset;
-        
-        uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius
-        
-        uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start
-        
-        
-        
-        attribute vec3 aPosition;
-        
-        attribute vec3 aEuler;
-        
-        attribute vec2 aMisc; //x:size, y:fade
-        
-        
-        
-        varying vec3 pposition;
-        
-        varying float psize;
-        
-        varying float palpha;
-        
-        varying float pdist;
-        
-        
-        
-        //varying mat3 rotMat;
-        
-        varying vec3 normX;
-        
-        varying vec3 normY;
-        
-        varying vec3 normZ;
-        
-        varying vec3 normal;
-        
-        
-        
-        varying float diffuse;
-        
-        varying float specular;
-        
-        varying float rstop;
-        
-        varying float distancefade;
-        
-        
-        
-        void main(void) {
-        
-            // Projection is based on vertical angle
-        
-            vec4 pos = uModelview * vec4(aPosition + uOffset, 1.0);
-        
-            gl_Position = uProjection * pos;
-        
-            gl_PointSize = aMisc.x * uProjection[1][1] / -pos.z * uResolution.y * 0.5;
-        
-            
-        
-            pposition = pos.xyz;
-        
-            psize = aMisc.x;
-        
-            pdist = length(pos.xyz);
-        
-            palpha = smoothstep(0.0, 1.0, (pdist - 0.1) / uFade.z);
-        
-            
-        
-            vec3 elrsn = sin(aEuler);
-        
-            vec3 elrcs = cos(aEuler);
-        
-            mat3 rotx = mat3(
-        
-                1.0, 0.0, 0.0,
-        
-                0.0, elrcs.x, elrsn.x,
-        
-                0.0, -elrsn.x, elrcs.x
-        
-            );
-        
-            mat3 roty = mat3(
-        
-                elrcs.y, 0.0, -elrsn.y,
-        
-                0.0, 1.0, 0.0,
-        
-                elrsn.y, 0.0, elrcs.y
-        
-            );
-        
-            mat3 rotz = mat3(
-        
-                elrcs.z, elrsn.z, 0.0, 
-        
-                -elrsn.z, elrcs.z, 0.0,
-        
-                0.0, 0.0, 1.0
-        
-            );
-        
-            mat3 rotmat = rotx * roty * rotz;
-        
-            normal = rotmat[2];
-        
-            
-        
-            mat3 trrotm = mat3(
-        
-                rotmat[0][0], rotmat[1][0], rotmat[2][0],
-        
-                rotmat[0][1], rotmat[1][1], rotmat[2][1],
-        
-                rotmat[0][2], rotmat[1][2], rotmat[2][2]
-        
-            );
-        
-            normX = trrotm[0];
-        
-            normY = trrotm[1];
-        
-            normZ = trrotm[2];
-        
-            
-        
-            const vec3 lit = vec3(0.6917144638660746, 0.6917144638660746, -0.20751433915982237);
-        
-            
-        
-            float tmpdfs = dot(lit, normal);
-        
-            if(tmpdfs < 0.0) {
-        
-                normal = -normal;
-        
-                tmpdfs = dot(lit, normal);
-        
-            }
-        
-            diffuse = 0.4 + tmpdfs;
-        
-            
-        
-            vec3 eyev = normalize(-pos.xyz);
-        
-            if(dot(eyev, normal) > 0.0) {
-        
-                vec3 hv = normalize(eyev + lit);
-        
-                specular = pow(max(dot(hv, normal), 0.0), 20.0);
-        
-            }
-        
-            else {
-        
-                specular = 0.0;
-        
-            }
-        
-            
-        
-            rstop = clamp((abs(pdist - uDOF.x) - uDOF.y) / uDOF.z, 0.0, 1.0);
-        
-            rstop = pow(rstop, 0.5);
-        
-            //-0.69315 = ln(0.5)
-        
-            distancefade = min(1.0, exp((uFade.x - pdist) * 0.69315 / uFade.y));
-        
-        }
-        
-        </script>
-        <script id="sakura_point_fsh" type="x-shader/x_fragment">
-        
-        #ifdef GL_ES
-        
-        //precision mediump float;
-        
-        precision highp float;
-        
-        #endif
-        
-        
-        
-        uniform vec3 uDOF;  //x:focus distance, y:focus radius, z:max radius
-        
-        uniform vec3 uFade; //x:start distance, y:half distance, z:near fade start
-        
-        
-        
-        const vec3 fadeCol = vec3(0.08, 0.03, 0.06);
-        
-        
-        
-        varying vec3 pposition;
-        
-        varying float psize;
-        
-        varying float palpha;
-        
-        varying float pdist;
-        
-        
-        
-        //varying mat3 rotMat;
-        
-        varying vec3 normX;
-        
-        varying vec3 normY;
-        
-        varying vec3 normZ;
-        
-        varying vec3 normal;
-        
-        
-        
-        varying float diffuse;
-        
-        varying float specular;
-        
-        varying float rstop;
-        
-        varying float distancefade;
-        
-        
-        
-        float ellipse(vec2 p, vec2 o, vec2 r) {
-        
-            vec2 lp = (p - o) / r;
-        
-            return length(lp) - 1.0;
-        
-        }
-        
-        
-        
-        void main(void) {
-        
-            vec3 p = vec3(gl_PointCoord - vec2(0.5, 0.5), 0.0) * 2.0;
-        
-            vec3 d = vec3(0.0, 0.0, -1.0);
-        
-            float nd = normZ.z; //dot(-normZ, d);
-        
-            if(abs(nd) < 0.0001) discard;
-        
-            
-        
-            float np = dot(normZ, p);
-        
-            vec3 tp = p + d * np / nd;
-        
-            vec2 coord = vec2(dot(normX, tp), dot(normY, tp));
-        
-            
-        
-            //angle = 15 degree
-        
-            const float flwrsn = 0.258819045102521;
-        
-            const float flwrcs = 0.965925826289068;
-        
-            mat2 flwrm = mat2(flwrcs, -flwrsn, flwrsn, flwrcs);
-        
-            vec2 flwrp = vec2(abs(coord.x), coord.y) * flwrm;
-        
-            
-        
-            float r;
-        
-            if(flwrp.x < 0.0) {
-        
-                r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.36, 0.96) * 0.5);
-        
-            }
-        
-            else {
-        
-                r = ellipse(flwrp, vec2(0.065, 0.024) * 0.5, vec2(0.58, 0.96) * 0.5);
-        
-            }
-        
-            
-        
-            if(r > rstop) discard;
-        
-            
-        
-            vec3 col = mix(vec3(1.0, 0.8, 0.75), vec3(1.0, 0.9, 0.87), r);
-        
-            float grady = mix(0.0, 1.0, pow(coord.y * 0.5 + 0.5, 0.35));
-        
-            col *= vec3(1.0, grady, grady);
-        
-            col *= mix(0.8, 1.0, pow(abs(coord.x), 0.3));
-        
-            col = col * diffuse + specular;
-        
-            
-        
-            col = mix(fadeCol, col, distancefade);
-        
-            
-        
-            float alpha = (rstop > 0.001)? (0.5 - r / (rstop * 2.0)) : 1.0;
-        
-            alpha = smoothstep(0.0, 1.0, alpha) * palpha;
-        
-            
-        
-            gl_FragColor = vec4(col * 0.5, alpha);
-        
-        }
-        
-        </script>
-        
-        <script id="fx_common_vsh" type="x-shader/x_vertex">
-        
-        uniform vec3 uResolution;
-        
-        attribute vec2 aPosition;
-        
-        
-        
-        varying vec2 texCoord;
-        
-        varying vec2 screenCoord;
-        
-        
-        
-        void main(void) {
-        
-            gl_Position = vec4(aPosition, 0.0, 1.0);
-        
-            texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);
-        
-            screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
-        
-        }
-        
-        </script>
-        <script id="bg_fsh" type="x-shader/x_fragment">
-        
-        #ifdef GL_ES
-        
-        //precision mediump float;
-        
-        precision highp float;
-        
-        #endif
-        
-        
-        
-        uniform vec2 uTimes;
-        
-        
-        
-        varying vec2 texCoord;
-        
-        varying vec2 screenCoord;
-        
-        
-        
-        void main(void) {
-        
-            vec3 col;
-        
-            float c;
-        
-            vec2 tmpv = texCoord * vec2(0.8, 1.0) - vec2(0.95, 1.0);
-        
-            c = exp(-pow(length(tmpv) * 1.8, 2.0));
-        
-            col = mix(vec3(0.02, 0.0, 0.03), vec3(0.96, 0.98, 1.0) * 1.5, c);
-        
-            gl_FragColor = vec4(col * 0.5, 1.0);
-        
-        }
-        
-        </script>
-        <script id="fx_brightbuf_fsh" type="x-shader/x_fragment">
-        
-        #ifdef GL_ES
-        
-        //precision mediump float;
-        
-        precision highp float;
-        
-        #endif
-        
-        uniform sampler2D uSrc;
-        
-        uniform vec2 uDelta;
-        
-        
-        
-        varying vec2 texCoord;
-        
-        varying vec2 screenCoord;
-        
-        
-        
-        void main(void) {
-        
-            vec4 col = texture2D(uSrc, texCoord);
-        
-            gl_FragColor = vec4(col.rgb * 2.0 - vec3(0.5), 1.0);
-        
-        }
-        
-        </script>
-        <script id="fx_dirblur_r4_fsh" type="x-shader/x_fragment">
-        
-        #ifdef GL_ES
-        
-        //precision mediump float;
-        
-        precision highp float;
-        
-        #endif
-        
-        uniform sampler2D uSrc;
-        
-        uniform vec2 uDelta;
-        
-        uniform vec4 uBlurDir; //dir(x, y), stride(z, w)
-        
-        
-        
-        varying vec2 texCoord;
-        
-        varying vec2 screenCoord;
-        
-        
-        
-        void main(void) {
-        
-            vec4 col = texture2D(uSrc, texCoord);
-        
-            col = col + texture2D(uSrc, texCoord + uBlurDir.xy * uDelta);
-        
-            col = col + texture2D(uSrc, texCoord - uBlurDir.xy * uDelta);
-        
-            col = col + texture2D(uSrc, texCoord + (uBlurDir.xy + uBlurDir.zw) * uDelta);
-        
-            col = col + texture2D(uSrc, texCoord - (uBlurDir.xy + uBlurDir.zw) * uDelta);
-        
-            gl_FragColor = col / 5.0;
-        
-        }
-        
-        </script>
-        
-        <script id="fx_common_fsh" type="x-shader/x_fragment">
-        
-        #ifdef GL_ES
-        
-        //precision mediump float;
-        
-        precision highp float;
-        
-        #endif
-        
-        uniform sampler2D uSrc;
-        
-        uniform vec2 uDelta;
-        
-        
-        
-        varying vec2 texCoord;
-        
-        varying vec2 screenCoord;
-        
-        
-        
-        void main(void) {
-        
-            gl_FragColor = texture2D(uSrc, texCoord);
-        
-        }
-        
-        </script>
-        
-        <script id="pp_final_vsh" type="x-shader/x_vertex">
-        
-        uniform vec3 uResolution;
-        
-        attribute vec2 aPosition;
-        
-        varying vec2 texCoord;
-        
-        varying vec2 screenCoord;
-        
-        void main(void) {
-        
-            gl_Position = vec4(aPosition, 0.0, 1.0);
-        
-            texCoord = aPosition.xy * 0.5 + vec2(0.5, 0.5);
-        
-            screenCoord = aPosition.xy * vec2(uResolution.z, 1.0);
-        
-        }
-        
-        </script>
-        <script id="pp_final_fsh" type="x-shader/x_fragment">
-        
-        #ifdef GL_ES
-        
-        //precision mediump float;
-        
-        precision highp float;
-        
-        #endif
-        
-        uniform sampler2D uSrc;
-        
-        uniform sampler2D uBloom;
-        
-        uniform vec2 uDelta;
-        
-        varying vec2 texCoord;
-        
-        varying vec2 screenCoord;
-        
-        void main(void) {
-        
-            vec4 srccol = texture2D(uSrc, texCoord) * 2.0;
-        
-            vec4 bloomcol = texture2D(uBloom, texCoord);
-        
-            vec4 col;
-        
-            col = srccol + bloomcol * (vec4(1.0) + srccol);
-        
-            col *= smoothstep(1.0, 0.0, pow(length((texCoord - vec2(0.5)) * 2.0), 1.2) * 0.5);
-        
-            col = pow(col, vec4(0.45454545454545)); //(1.0 / 2.2)
-        
-            
-        
-            gl_FragColor = vec4(col.rgb, 1.0);
-        
-            gl_FragColor.a = 1.0;
-        
-        }
-        
-        </script>
-        
-        <script>
-        
-        // Utilities
-        
-        var Vector3 = {};
-        
-        var Matrix44 = {};
-        
-        Vector3.create = function(x, y, z) {
-        
-            return {'x':x, 'y':y, 'z':z};
-        
-        };
-        
-        Vector3.dot = function (v0, v1) {
-        
-            return v0.x * v1.x + v0.y * v1.y + v0.z * v1.z;
-        
-        };
-        
-        Vector3.cross = function (v, v0, v1) {
-        
-            v.x = v0.y * v1.z - v0.z * v1.y;
-        
-            v.y = v0.z * v1.x - v0.x * v1.z;
-        
-            v.z = v0.x * v1.y - v0.y * v1.x;
-        
-        };
-        
-        Vector3.normalize = function (v) {
-        
-            var l = v.x * v.x + v.y * v.y + v.z * v.z;
-        
-            if(l > 0.00001) {
-        
-                l = 1.0 / Math.sqrt(l);
-        
-                v.x *= l;
-        
-                v.y *= l;
-        
-                v.z *= l;
-        
-            }
-        
-        };
-        
-        Vector3.arrayForm = function(v) {
-        
-            if(v.array) {
-        
-                v.array[0] = v.x;
-        
-                v.array[1] = v.y;
-        
-                v.array[2] = v.z;
-        
-            }
-        
-            else {
-        
-                v.array = new Float32Array([v.x, v.y, v.z]);
-        
-            }
-        
-            return v.array;
-        
-        };
-        
-        Matrix44.createIdentity = function () {
-        
-            return new Float32Array([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]);
-        
-        };
-        
-        Matrix44.loadProjection = function (m, aspect, vdeg, near, far) {
-        
-            var h = near * Math.tan(vdeg * Math.PI / 180.0 * 0.5) * 2.0;
-        
-            var w = h * aspect;
-        
-            
-        
-            m[0] = 2.0 * near / w;
-        
-            m[1] = 0.0;
-        
-            m[2] = 0.0;
-        
-            m[3] = 0.0;
-        
-            
-        
-            m[4] = 0.0;
-        
-            m[5] = 2.0 * near / h;
-        
-            m[6] = 0.0;
-        
-            m[7] = 0.0;
-        
-            
-        
-            m[8] = 0.0;
-        
-            m[9] = 0.0;
-        
-            m[10] = -(far + near) / (far - near);
-        
-            m[11] = -1.0;
-        
-            
-        
-            m[12] = 0.0;
-        
-            m[13] = 0.0;
-        
-            m[14] = -2.0 * far * near / (far - near);
-        
-            m[15] = 0.0;
-        
-        };
-        
-        Matrix44.loadLookAt = function (m, vpos, vlook, vup) {
-        
-            var frontv = Vector3.create(vpos.x - vlook.x, vpos.y - vlook.y, vpos.z - vlook.z);
-        
-            Vector3.normalize(frontv);
-        
-            var sidev = Vector3.create(1.0, 0.0, 0.0);
-        
-            Vector3.cross(sidev, vup, frontv);
-        
-            Vector3.normalize(sidev);
-        
-            var topv = Vector3.create(1.0, 0.0, 0.0);
-        
-            Vector3.cross(topv, frontv, sidev);
-        
-            Vector3.normalize(topv);
-        
-            
-        
-            m[0] = sidev.x;
-        
-            m[1] = topv.x;
-        
-            m[2] = frontv.x;
-        
-            m[3] = 0.0;
-        
-            
-        
-            m[4] = sidev.y;
-        
-            m[5] = topv.y;
-        
-            m[6] = frontv.y;
-        
-            m[7] = 0.0;
-        
-            
-        
-            m[8] = sidev.z;
-        
-            m[9] = topv.z;
-        
-            m[10] = frontv.z;
-        
-            m[11] = 0.0;
-        
-            
-        
-            m[12] = -(vpos.x * m[0] + vpos.y * m[4] + vpos.z * m[8]);
-        
-            m[13] = -(vpos.x * m[1] + vpos.y * m[5] + vpos.z * m[9]);
-        
-            m[14] = -(vpos.x * m[2] + vpos.y * m[6] + vpos.z * m[10]);
-        
-            m[15] = 1.0;
-        
-        };
-        
-        
-        
-        //
-        
-        var timeInfo = {
-        
-            'start':0, 'prev':0, // Date
-        
-            'delta':0, 'elapsed':0 // Number(sec)
-        
-        };
-        
-        
-        
-        //
-        
-        var gl;
-        
-        var renderSpec = {
-        
-            'width':0,
-        
-            'height':0,
-        
-            'aspect':1,
-        
-            'array':new Float32Array(3),
-        
-            'halfWidth':0,
-        
-            'halfHeight':0,
-        
-            'halfArray':new Float32Array(3)
-        
-            // and some render targets. see setViewport()
-        
-        };
-        
-        renderSpec.setSize = function(w, h) {
-        
-            renderSpec.width = w;
-        
-            renderSpec.height = h;
-        
-            renderSpec.aspect = renderSpec.width / renderSpec.height;
-        
-            renderSpec.array[0] = renderSpec.width;
-        
-            renderSpec.array[1] = renderSpec.height;
-        
-            renderSpec.array[2] = renderSpec.aspect;
-        
-            
-        
-            renderSpec.halfWidth = Math.floor(w / 2);
-        
-            renderSpec.halfHeight = Math.floor(h / 2);
-        
-            renderSpec.halfArray[0] = renderSpec.halfWidth;
-        
-            renderSpec.halfArray[1] = renderSpec.halfHeight;
-        
-            renderSpec.halfArray[2] = renderSpec.halfWidth / renderSpec.halfHeight;
-        
-        };
-        
-        
-        
-        function deleteRenderTarget(rt) {
-        
-            gl.deleteFramebuffer(rt.frameBuffer);
-        
-            gl.deleteRenderbuffer(rt.renderBuffer);
-        
-            gl.deleteTexture(rt.texture);
-        
-        }
-        
-        
-        
-        function createRenderTarget(w, h) {
-        
-            var ret = {
-        
-                'width':w,
-        
-                'height':h,
-        
-                'sizeArray':new Float32Array([w, h, w / h]),
-        
-                'dtxArray':new Float32Array([1.0 / w, 1.0 / h])
-        
-            };
-        
-            ret.frameBuffer = gl.createFramebuffer();
-        
-            ret.renderBuffer = gl.createRenderbuffer();
-        
-            ret.texture = gl.createTexture();
-        
-            
-        
-            gl.bindTexture(gl.TEXTURE_2D, ret.texture);
-        
-            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
-        
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-        
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        
-            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        
-            
-        
-            gl.bindFramebuffer(gl.FRAMEBUFFER, ret.frameBuffer);
-        
-            gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, ret.texture, 0);
-        
-            
-        
-            gl.bindRenderbuffer(gl.RENDERBUFFER, ret.renderBuffer);
-        
-            gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, w, h);
-        
-            gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, ret.renderBuffer);
-        
-            
-        
-            gl.bindTexture(gl.TEXTURE_2D, null);
-        
-            gl.bindRenderbuffer(gl.RENDERBUFFER, null);
-        
-            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-        
-            
-        
-            return ret;
-        
-        }
-        
-        
-        
-        function compileShader(shtype, shsrc) {
-        
-            var retsh = gl.createShader(shtype);
-        
-            
-        
-            gl.shaderSource(retsh, shsrc);
-        
-            gl.compileShader(retsh);
-        
-            
-        
-            if(!gl.getShaderParameter(retsh, gl.COMPILE_STATUS)) {
-        
-                var errlog = gl.getShaderInfoLog(retsh);
-        
-                gl.deleteShader(retsh);
-        
-                console.error(errlog);
-        
-                return null;
-        
-            }
-        
-            return retsh;
-        
-        }
-        
-        
-        
-        function createShader(vtxsrc, frgsrc, uniformlist, attrlist) {
-        
-            var vsh = compileShader(gl.VERTEX_SHADER, vtxsrc);
-        
-            var fsh = compileShader(gl.FRAGMENT_SHADER, frgsrc);
-        
-            
-        
-            if(vsh == null || fsh == null) {
-        
-                return null;
-        
-            }
-        
-            
-        
-            var prog = gl.createProgram();
-        
-            gl.attachShader(prog, vsh);
-        
-            gl.attachShader(prog, fsh);
-        
-            
-        
-            gl.deleteShader(vsh);
-        
-            gl.deleteShader(fsh);
-        
-            
-        
-            gl.linkProgram(prog);
-        
-            if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-        
-                var errlog = gl.getProgramInfoLog(prog);
-        
-                console.error(errlog);
-        
-                return null;
-        
-            }
-        
-            
-        
-            if(uniformlist) {
-        
-                prog.uniforms = {};
-        
-                for(var i = 0; i < uniformlist.length; i++) {
-        
-                    prog.uniforms[uniformlist[i]] = gl.getUniformLocation(prog, uniformlist[i]);
-        
-                }
-        
-            }
-        
-            
-        
-            if(attrlist) {
-        
-                prog.attributes = {};
-        
-                for(var i = 0; i < attrlist.length; i++) {
-        
-                    var attr = attrlist[i];
-        
-                    prog.attributes[attr] = gl.getAttribLocation(prog, attr);
-        
-                }
-        
-            }
-        
-            
-        
-            return prog;
-        
-        }
-        
-        
-        
-        function useShader(prog) {
-        
-            gl.useProgram(prog);
-        
-            for(var attr in prog.attributes) {
-        
-                gl.enableVertexAttribArray(prog.attributes[attr]);;
-        
-            }
-        
-        }
-        
-        
-        
-        function unuseShader(prog) {
-        
-            for(var attr in prog.attributes) {
-        
-                gl.disableVertexAttribArray(prog.attributes[attr]);;
-        
-            }
-        
-            gl.useProgram(null);
-        
-        }
-        
-        
-        
-        /////
-        
-        var projection = {
-        
-            'angle':60,
-        
-            'nearfar':new Float32Array([0.1, 100.0]),
-        
-            'matrix':Matrix44.createIdentity()
-        
-        };
-        
-        var camera = {
-        
-            'position':Vector3.create(0, 0, 100),
-        
-            'lookat':Vector3.create(0, 0, 0),
-        
-            'up':Vector3.create(0, 1, 0),
-        
-            'dof':Vector3.create(10.0, 4.0, 8.0),
-        
-            'matrix':Matrix44.createIdentity()
-        
-        };
-        
-        
-        
-        var pointFlower = {};
-        
-        var meshFlower = {};
-        
-        var sceneStandBy = false;
-        
-        
-        
-        var BlossomParticle = function () {
-        
-            this.velocity = new Array(3);
-        
-            this.rotation = new Array(3);
-        
-            this.position = new Array(3);
-        
-            this.euler = new Array(3);
-        
-            this.size = 1.0;
-        
-            this.alpha = 1.0;
-        
-            this.zkey = 0.0;
-        
-        };
-        
-        
-        
-        BlossomParticle.prototype.setVelocity = function (vx, vy, vz) {
-        
-            this.velocity[0] = vx;
-        
-            this.velocity[1] = vy;
-        
-            this.velocity[2] = vz;
-        
-        };
-        
-        
-        
-        BlossomParticle.prototype.setRotation = function (rx, ry, rz) {
-        
-            this.rotation[0] = rx;
-        
-            this.rotation[1] = ry;
-        
-            this.rotation[2] = rz;
-        
-        };
-        
-        
-        
-        BlossomParticle.prototype.setPosition = function (nx, ny, nz) {
-        
-            this.position[0] = nx;
-        
-            this.position[1] = ny;
-        
-            this.position[2] = nz;
-        
-        };
-        
-        
-        
-        BlossomParticle.prototype.setEulerAngles = function (rx, ry, rz) {
-        
-            this.euler[0] = rx;
-        
-            this.euler[1] = ry;
-        
-            this.euler[2] = rz;
-        
-        };
-        
-        
-        
-        BlossomParticle.prototype.setSize = function (s) {
-        
-            this.size = s;
-        
-        };
-        
-        
-        
-        BlossomParticle.prototype.update = function (dt, et) {
-        
-            this.position[0] += this.velocity[0] * dt;
-        
-            this.position[1] += this.velocity[1] * dt;
-        
-            this.position[2] += this.velocity[2] * dt;
-        
-            
-        
-            this.euler[0] += this.rotation[0] * dt;
-        
-            this.euler[1] += this.rotation[1] * dt;
-        
-            this.euler[2] += this.rotation[2] * dt;
-        
-        };
-        
-        
-        
-        function createPointFlowers() {
-        
-            // get point sizes
-        
-            var prm = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
-        
-            renderSpec.pointSize = {'min':prm[0], 'max':prm[1]};
-        
-            
-        
-            var vtxsrc = document.getElementById("sakura_point_vsh").textContent;
-        
-            var frgsrc = document.getElementById("sakura_point_fsh").textContent;
-        
-            
-        
-            pointFlower.program = createShader(
-        
-                vtxsrc, frgsrc,
-        
-                ['uProjection', 'uModelview', 'uResolution', 'uOffset', 'uDOF', 'uFade'],
-        
-                ['aPosition', 'aEuler', 'aMisc']
-        
-            );
-        
-            
-        
-            useShader(pointFlower.program);
-        
-            pointFlower.offset = new Float32Array([0.0, 0.0, 0.0]);
-        
-            pointFlower.fader = Vector3.create(0.0, 10.0, 0.0);
-        
-            
-        
-            // paramerters: velocity[3], rotate[3]
-        
-            pointFlower.numFlowers = 1600;
-        
-            pointFlower.particles = new Array(pointFlower.numFlowers);
-        
-            // vertex attributes {position[3], euler_xyz[3], size[1]}
-        
-            pointFlower.dataArray = new Float32Array(pointFlower.numFlowers * (3 + 3 + 2));
-        
-            pointFlower.positionArrayOffset = 0;
-        
-            pointFlower.eulerArrayOffset = pointFlower.numFlowers * 3;
-        
-            pointFlower.miscArrayOffset = pointFlower.numFlowers * 6;
-        
-            
-        
-            pointFlower.buffer = gl.createBuffer();
-        
-            gl.bindBuffer(gl.ARRAY_BUFFER, pointFlower.buffer);
-        
-            gl.bufferData(gl.ARRAY_BUFFER, pointFlower.dataArray, gl.DYNAMIC_DRAW);
-        
-            gl.bindBuffer(gl.ARRAY_BUFFER, null);
-        
-            
-        
-            unuseShader(pointFlower.program);
-        
-            
-        
-            for(var i = 0; i < pointFlower.numFlowers; i++) {
-        
-                pointFlower.particles[i] = new BlossomParticle();
-        
-            }
-        
-        }
-        
-        
-        
-        function initPointFlowers() {
-        
-            //area
-        
-            pointFlower.area = Vector3.create(20.0, 20.0, 20.0);
-        
-            pointFlower.area.x = pointFlower.area.y * renderSpec.aspect;
-        
-            
-        
-            pointFlower.fader.x = 10.0; //env fade start
-        
-            pointFlower.fader.y = pointFlower.area.z; //env fade half
-        
-            pointFlower.fader.z = 0.1;  //near fade start
-        
-            
-        
-            //particles
-        
-            var PI2 = Math.PI * 2.0;
-        
-            var tmpv3 = Vector3.create(0, 0, 0);
-        
-            var tmpv = 0;
-        
-            var symmetryrand = function() {return (Math.random() * 2.0 - 1.0);};
-        
-            for(var i = 0; i < pointFlower.numFlowers; i++) {
-        
-                var tmpprtcl = pointFlower.particles[i];
-        
-                
-        
-                //velocity
-        
-                tmpv3.x = symmetryrand() * 0.3 + 0.8;
-        
-                tmpv3.y = symmetryrand() * 0.2 - 1.0;
-        
-                tmpv3.z = symmetryrand() * 0.3 + 0.5;
-        
-                Vector3.normalize(tmpv3);
-        
-                tmpv = 2.0 + Math.random() * 1.0;
-        
-                tmpprtcl.setVelocity(tmpv3.x * tmpv, tmpv3.y * tmpv, tmpv3.z * tmpv);
-        
-                
-        
-                //rotation
-        
-                tmpprtcl.setRotation(
-        
-                    symmetryrand() * PI2 * 0.5,
-        
-                    symmetryrand() * PI2 * 0.5,
-        
-                    symmetryrand() * PI2 * 0.5
-        
-                );
-        
-                
-        
-                //position
-        
-                tmpprtcl.setPosition(
-        
-                    symmetryrand() * pointFlower.area.x,
-        
-                    symmetryrand() * pointFlower.area.y,
-        
-                    symmetryrand() * pointFlower.area.z
-        
-                );
-        
-                
-        
-                //euler
-        
-                tmpprtcl.setEulerAngles(
-        
-                    Math.random() * Math.PI * 2.0,
-        
-                    Math.random() * Math.PI * 2.0,
-        
-                    Math.random() * Math.PI * 2.0
-        
-                );
-        
-                
-        
-                //size
-        
-                tmpprtcl.setSize(0.9 + Math.random() * 0.1);
-        
-            }
-        
-        }
-        
-        
-        
-        function renderPointFlowers() {
-        
-            //update
-        
-            var PI2 = Math.PI * 2.0;
-        
-            var limit = [pointFlower.area.x, pointFlower.area.y, pointFlower.area.z];
-        
-            var repeatPos = function (prt, cmp, limit) {
-        
-                if(Math.abs(prt.position[cmp]) - prt.size * 0.5 > limit) {
-        
-                    //out of area
-        
-                    if(prt.position[cmp] > 0) {
-        
-                        prt.position[cmp] -= limit * 2.0;
-        
-                    }
-        
-                    else {
-        
-                        prt.position[cmp] += limit * 2.0;
-        
-                    }
-        
-                }
-        
-            };
-        
-            var repeatEuler = function (prt, cmp) {
-        
-                prt.euler[cmp] = prt.euler[cmp] % PI2;
-        
-                if(prt.euler[cmp] < 0.0) {
-        
-                    prt.euler[cmp] += PI2;
-        
-                }
-        
-            };
-        
-            
-        
-            for(var i = 0; i < pointFlower.numFlowers; i++) {
-        
-                var prtcl = pointFlower.particles[i];
-        
-                prtcl.update(timeInfo.delta, timeInfo.elapsed);
-        
-                repeatPos(prtcl, 0, pointFlower.area.x);
-        
-                repeatPos(prtcl, 1, pointFlower.area.y);
-        
-                repeatPos(prtcl, 2, pointFlower.area.z);
-        
-                repeatEuler(prtcl, 0);
-        
-                repeatEuler(prtcl, 1);
-        
-                repeatEuler(prtcl, 2);
-        
-                
-        
-                prtcl.alpha = 1.0;//(pointFlower.area.z - prtcl.position[2]) * 0.5;
-        
-                
-        
-                prtcl.zkey = (camera.matrix[2] * prtcl.position[0]
-        
-                            + camera.matrix[6] * prtcl.position[1]
-        
-                            + camera.matrix[10] * prtcl.position[2]
-        
-                            + camera.matrix[14]);
-        
-            }
-        
-            
-        
-            // sort
-        
-            pointFlower.particles.sort(function(p0, p1){return p0.zkey - p1.zkey;});
-        
-            
-        
-            // update data
-        
-            var ipos = pointFlower.positionArrayOffset;
-        
-            var ieuler = pointFlower.eulerArrayOffset;
-        
-            var imisc = pointFlower.miscArrayOffset;
-        
-            for(var i = 0; i < pointFlower.numFlowers; i++) {
-        
-                var prtcl = pointFlower.particles[i];
-        
-                pointFlower.dataArray[ipos] = prtcl.position[0];
-        
-                pointFlower.dataArray[ipos + 1] = prtcl.position[1];
-        
-                pointFlower.dataArray[ipos + 2] = prtcl.position[2];
-        
-                ipos += 3;
-        
-                pointFlower.dataArray[ieuler] = prtcl.euler[0];
-        
-                pointFlower.dataArray[ieuler + 1] = prtcl.euler[1];
-        
-                pointFlower.dataArray[ieuler + 2] = prtcl.euler[2];
-        
-                ieuler += 3;
-        
-                pointFlower.dataArray[imisc] = prtcl.size;
-        
-                pointFlower.dataArray[imisc + 1] = prtcl.alpha;
-        
-                imisc += 2;
-        
-            }
-        
-            
-        
-            //draw
-        
-            gl.enable(gl.BLEND);
-        
-            //gl.disable(gl.DEPTH_TEST);
-        
-            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-        
-            
-        
-            var prog = pointFlower.program;
-        
-            useShader(prog);
-        
-            
-        
-            gl.uniformMatrix4fv(prog.uniforms.uProjection, false, projection.matrix);
-        
-            gl.uniformMatrix4fv(prog.uniforms.uModelview, false, camera.matrix);
-        
-            gl.uniform3fv(prog.uniforms.uResolution, renderSpec.array);
-        
-            gl.uniform3fv(prog.uniforms.uDOF, Vector3.arrayForm(camera.dof));
-        
-            gl.uniform3fv(prog.uniforms.uFade, Vector3.arrayForm(pointFlower.fader));
-        
-            
-        
-            gl.bindBuffer(gl.ARRAY_BUFFER, pointFlower.buffer);
-        
-            gl.bufferData(gl.ARRAY_BUFFER, pointFlower.dataArray, gl.DYNAMIC_DRAW);
-        
-            
-        
-            gl.vertexAttribPointer(prog.attributes.aPosition, 3, gl.FLOAT, false, 0, pointFlower.positionArrayOffset * Float32Array.BYTES_PER_ELEMENT);
-        
-            gl.vertexAttribPointer(prog.attributes.aEuler, 3, gl.FLOAT, false, 0, pointFlower.eulerArrayOffset * Float32Array.BYTES_PER_ELEMENT);
-        
-            gl.vertexAttribPointer(prog.attributes.aMisc, 2, gl.FLOAT, false, 0, pointFlower.miscArrayOffset * Float32Array.BYTES_PER_ELEMENT);
-        
-            
-        
-            // doubler
-        
-            for(var i = 1; i < 2; i++) {
-        
-                var zpos = i * -2.0;
-        
-                pointFlower.offset[0] = pointFlower.area.x * -1.0;
-        
-                pointFlower.offset[1] = pointFlower.area.y * -1.0;
-        
-                pointFlower.offset[2] = pointFlower.area.z * zpos;
-        
-                gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
-        
-                gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
-        
-                
-        
-                pointFlower.offset[0] = pointFlower.area.x * -1.0;
-        
-                pointFlower.offset[1] = pointFlower.area.y *  1.0;
-        
-                pointFlower.offset[2] = pointFlower.area.z * zpos;
-        
-                gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
-        
-                gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
-        
-                
-        
-                pointFlower.offset[0] = pointFlower.area.x *  1.0;
-        
-                pointFlower.offset[1] = pointFlower.area.y * -1.0;
-        
-                pointFlower.offset[2] = pointFlower.area.z * zpos;
-        
-                gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
-        
-                gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
-        
-                
-        
-                pointFlower.offset[0] = pointFlower.area.x *  1.0;
-        
-                pointFlower.offset[1] = pointFlower.area.y *  1.0;
-        
-                pointFlower.offset[2] = pointFlower.area.z * zpos;
-        
-                gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
-        
-                gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
-        
-            }
-        
-            
-        
-            //main
-        
-            pointFlower.offset[0] = 0.0;
-        
-            pointFlower.offset[1] = 0.0;
-        
-            pointFlower.offset[2] = 0.0;
-        
-            gl.uniform3fv(prog.uniforms.uOffset, pointFlower.offset);
-        
-            gl.drawArrays(gl.POINT, 0, pointFlower.numFlowers);
-        
-            
-        
-            gl.bindBuffer(gl.ARRAY_BUFFER, null);
-        
-            unuseShader(prog);
-        
-            
-        
-            gl.enable(gl.DEPTH_TEST);
-        
-            gl.disable(gl.BLEND);
-        
-        }
-        
-        
-        
-        // effects
-        
-        //common util
-        
-        function createEffectProgram(vtxsrc, frgsrc, exunifs, exattrs) {
-        
-            var ret = {};
-        
-            var unifs = ['uResolution', 'uSrc', 'uDelta'];
-        
-            if(exunifs) {
-        
-                unifs = unifs.concat(exunifs);
-        
-            }
-        
-            var attrs = ['aPosition'];
-        
-            if(exattrs) {
-        
-                attrs = attrs.concat(exattrs);
-        
-            }
-        
-            
-        
-            ret.program = createShader(vtxsrc, frgsrc, unifs, attrs);
-        
-            useShader(ret.program);
-        
-            
-        
-            ret.dataArray = new Float32Array([
-        
-                -1.0, -1.0,
-        
-                 1.0, -1.0,
-        
-                -1.0,  1.0,
-        
-                 1.0,  1.0
-        
-            ]);
-        
-            ret.buffer = gl.createBuffer();
-        
-            gl.bindBuffer(gl.ARRAY_BUFFER, ret.buffer);
-        
-            gl.bufferData(gl.ARRAY_BUFFER, ret.dataArray, gl.STATIC_DRAW);
-        
-            
-        
-            gl.bindBuffer(gl.ARRAY_BUFFER, null);
-        
-            unuseShader(ret.program);
-        
-            
-        
-            return ret;
-        
-        }
-        
-        
-        
-        // basic usage
-        
-        // useEffect(prog, srctex({'texture':texid, 'dtxArray':(f32)[dtx, dty]})); //basic initialize
-        
-        // gl.uniform**(...); //additional uniforms
-        
-        // drawEffect()
-        
-        // unuseEffect(prog)
-        
-        // TEXTURE0 makes src
-        
-        function useEffect(fxobj, srctex) {
-        
-            var prog = fxobj.program;
-        
-            useShader(prog);
-        
-            gl.uniform3fv(prog.uniforms.uResolution, renderSpec.array);
-        
-            
-        
-            if(srctex != null) {
-        
-                gl.uniform2fv(prog.uniforms.uDelta, srctex.dtxArray);
-        
-                gl.uniform1i(prog.uniforms.uSrc, 0);
-        
-                
-        
-                gl.activeTexture(gl.TEXTURE0);
-        
-                gl.bindTexture(gl.TEXTURE_2D, srctex.texture);
-        
-            }
-        
-        }
-        
-        function drawEffect(fxobj) {
-        
-            gl.bindBuffer(gl.ARRAY_BUFFER, fxobj.buffer);
-        
-            gl.vertexAttribPointer(fxobj.program.attributes.aPosition, 2, gl.FLOAT, false, 0, 0);
-        
-            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-        
-        }
-        
-        function unuseEffect(fxobj) {
-        
-            unuseShader(fxobj.program);
-        
-        }
-        
-        
-        
-        var effectLib = {};
-        
-        function createEffectLib() {
-        
-            
-        
-            var vtxsrc, frgsrc;
-        
-            //common
-        
-            var cmnvtxsrc = document.getElementById("fx_common_vsh").textContent;
-        
-            
-        
-            //background
-        
-            frgsrc = document.getElementById("bg_fsh").textContent;
-        
-            effectLib.sceneBg = createEffectProgram(cmnvtxsrc, frgsrc, ['uTimes'], null);
-        
-            
-        
-            // make brightpixels buffer
-        
-            frgsrc = document.getElementById("fx_brightbuf_fsh").textContent;
-        
-            effectLib.mkBrightBuf = createEffectProgram(cmnvtxsrc, frgsrc, null, null);
-        
-            
-        
-            // direction blur
-        
-            frgsrc = document.getElementById("fx_dirblur_r4_fsh").textContent;
-        
-            effectLib.dirBlur = createEffectProgram(cmnvtxsrc, frgsrc, ['uBlurDir'], null);
-        
-            
-        
-            //final composite
-        
-            vtxsrc = document.getElementById("pp_final_vsh").textContent;
-        
-            frgsrc = document.getElementById("pp_final_fsh").textContent;
-        
-            effectLib.finalComp = createEffectProgram(vtxsrc, frgsrc, ['uBloom'], null);
-        
-        }
-        
-        
-        
-        // background
-        
-        function createBackground() {
-        
-            //console.log("create background");
-        
-        }
-        
-        function initBackground() {
-        
-            //console.log("init background");
-        
-        }
-        
-        function renderBackground() {
-        
-            gl.disable(gl.DEPTH_TEST);
-        
-            
-        
-            useEffect(effectLib.sceneBg, null);
-        
-            gl.uniform2f(effectLib.sceneBg.program.uniforms.uTimes, timeInfo.elapsed, timeInfo.delta);
-        
-            drawEffect(effectLib.sceneBg);
-        
-            unuseEffect(effectLib.sceneBg);
-        
-            
-        
-            gl.enable(gl.DEPTH_TEST);
-        
-        }
-        
-        
-        
-        // post process
-        
-        var postProcess = {};
-        
-        function createPostProcess() {
-        
-            //console.log("create post process");
-        
-        }
-        
-        function initPostProcess() {
-        
-            //console.log("init post process");
-        
-        }
-        
-        
-        
-        function renderPostProcess() {
-        
-            gl.enable(gl.TEXTURE_2D);
-        
-            gl.disable(gl.DEPTH_TEST);
-        
-            var bindRT = function (rt, isclear) {
-        
-                gl.bindFramebuffer(gl.FRAMEBUFFER, rt.frameBuffer);
-        
-                gl.viewport(0, 0, rt.width, rt.height);
-        
-                if(isclear) {
-        
-                    gl.clearColor(0, 0, 0, 0);
-        
-                    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        
-                }
-        
-            };
-        
-            
-        
-            //make bright buff
-        
-            bindRT(renderSpec.wHalfRT0, true);
-        
-            useEffect(effectLib.mkBrightBuf, renderSpec.mainRT);
-        
-            drawEffect(effectLib.mkBrightBuf);
-        
-            unuseEffect(effectLib.mkBrightBuf);
-        
-            
-        
-            // make bloom
-        
-            for(var i = 0; i < 2; i++) {
-        
-                var p = 1.5 + 1 * i;
-        
-                var s = 2.0 + 1 * i;
-        
-                bindRT(renderSpec.wHalfRT1, true);
-        
-                useEffect(effectLib.dirBlur, renderSpec.wHalfRT0);
-        
-                gl.uniform4f(effectLib.dirBlur.program.uniforms.uBlurDir, p, 0.0, s, 0.0);
-        
-                drawEffect(effectLib.dirBlur);
-        
-                unuseEffect(effectLib.dirBlur);
-        
-                
-        
-                bindRT(renderSpec.wHalfRT0, true);
-        
-                useEffect(effectLib.dirBlur, renderSpec.wHalfRT1);
-        
-                gl.uniform4f(effectLib.dirBlur.program.uniforms.uBlurDir, 0.0, p, 0.0, s);
-        
-                drawEffect(effectLib.dirBlur);
-        
-                unuseEffect(effectLib.dirBlur);
-        
-            }
-        
-            
-        
-            //display
-        
-            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-        
-            gl.viewport(0, 0, renderSpec.width, renderSpec.height);
-        
-            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        
-            
-        
-            useEffect(effectLib.finalComp, renderSpec.mainRT);
-        
-            gl.uniform1i(effectLib.finalComp.program.uniforms.uBloom, 1);
-        
-            gl.activeTexture(gl.TEXTURE1);
-        
-            gl.bindTexture(gl.TEXTURE_2D, renderSpec.wHalfRT0.texture);
-        
-            drawEffect(effectLib.finalComp);
-        
-            unuseEffect(effectLib.finalComp);
-        
-            
-        
-            gl.enable(gl.DEPTH_TEST);
-        
-        }
-        
-        
-        
-        /////
-        
-        var SceneEnv = {};
-        
-        function createScene() {
-        
-            createEffectLib();
-        
-            createBackground();
-        
-            createPointFlowers();
-        
-            createPostProcess();
-        
-            sceneStandBy = true;
-        
-        }
-        
-        
-        
-        function initScene() {
-        
-            initBackground();
-        
-            initPointFlowers();
-        
-            initPostProcess();
-        
-            
-        
-            //camera.position.z = 17.320508;
-        
-            camera.position.z = pointFlower.area.z + projection.nearfar[0];
-        
-            projection.angle = Math.atan2(pointFlower.area.y, camera.position.z + pointFlower.area.z) * 180.0 / Math.PI * 2.0;
-        
-            Matrix44.loadProjection(projection.matrix, renderSpec.aspect, projection.angle, projection.nearfar[0], projection.nearfar[1]);
-        
-        }
-        
-        
-        
-        function renderScene() {
-        
-            //draw
-        
-            Matrix44.loadLookAt(camera.matrix, camera.position, camera.lookat, camera.up);
-        
-            
-        
-            gl.enable(gl.DEPTH_TEST);
-        
-            
-        
-            //gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-        
-            gl.bindFramebuffer(gl.FRAMEBUFFER, renderSpec.mainRT.frameBuffer);
-        
-            gl.viewport(0, 0, renderSpec.mainRT.width, renderSpec.mainRT.height);
-        
-            gl.clearColor(0.005, 0, 0.05, 0);
-        
-            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        
-            
-        
-            renderBackground();
-        
-            renderPointFlowers();
-        
-            renderPostProcess();
-        
-        }
-        
-        
-        
-        /////
-        
-        function onResize(e) {
-        
-            makeCanvasFullScreen(document.getElementById("sakura"));
-        
-            setViewports();
-        
-            if(sceneStandBy) {
-        
-                initScene();
-        
-            }
-        
-        }
-        
-        
-        
-        function setViewports() {
-        
-            renderSpec.setSize(gl.canvas.width, gl.canvas.height);
-        
-            
-        
-            gl.clearColor(0.2, 0.2, 0.5, 1.0);
-        
-            gl.viewport(0, 0, renderSpec.width, renderSpec.height);
-        
-            
-        
-            var rtfunc = function (rtname, rtw, rth) {
-        
-                var rt = renderSpec[rtname];
-        
-                if(rt) deleteRenderTarget(rt);
-        
-                renderSpec[rtname] = createRenderTarget(rtw, rth);
-        
-            };
-        
-            rtfunc('mainRT', renderSpec.width, renderSpec.height);
-        
-            rtfunc('wFullRT0', renderSpec.width, renderSpec.height);
-        
-            rtfunc('wFullRT1', renderSpec.width, renderSpec.height);
-        
-            rtfunc('wHalfRT0', renderSpec.halfWidth, renderSpec.halfHeight);
-        
-            rtfunc('wHalfRT1', renderSpec.halfWidth, renderSpec.halfHeight);
-        
-        }
-        
-        
-        
-        function render() {
-        
-            renderScene();
-        
-        }
-        
-        
-        
-        var animating = true;
-        
-        function toggleAnimation(elm) {
-        
-            animating ^= true;
-        
-            if(animating) animate();
-        
-            if(elm) {
-        
-                elm.innerHTML = animating? "Stop":"Start";
-        
-            }
-        
-        }
-        
-        
-        
-        function stepAnimation() {
-        
-            if(!animating) animate();
-        
-        }
-        
-        
-        
-        function animate() {
-        
-            var curdate = new Date();
-        
-            timeInfo.elapsed = (curdate - timeInfo.start) / 1000.0;
-        
-            timeInfo.delta = (curdate - timeInfo.prev) / 1000.0;
-        
-            timeInfo.prev = curdate;
-        
-            
-        
-            if(animating) requestAnimationFrame(animate);
-        
-            render();
-        
-        }
-        
-        
-        
-        function makeCanvasFullScreen(canvas) {
-        
-            var b = document.body;
-        
-            var d = document.documentElement;
-        
-            fullw = Math.max(b.clientWidth , b.scrollWidth, d.scrollWidth, d.clientWidth);
-        
-            fullh = Math.max(b.clientHeight , b.scrollHeight, d.scrollHeight, d.clientHeight);
-        
-            canvas.width = fullw;
-        
-            canvas.height = fullh;
-        
-        }
-        
-        
-        
-        window.addEventListener('load', function(e) {
-        
-            var canvas = document.getElementById("sakura");
-        
-            try {
-        
-                makeCanvasFullScreen(canvas);
-        
-                gl = canvas.getContext('experimental-webgl');
-        
-            } catch(e) {
-        
-                alert("WebGL not supported." + e);
-        
-                console.error(e);
-        
-                return;
-        
-            }
-        
-            
-        
-            window.addEventListener('resize', onResize);
-        
-            
-        
-            setViewports();
-        
-            createScene();
-        
-            initScene();
-        
-            
-        
-            timeInfo.start = new Date();
-        
-            timeInfo.prev = timeInfo.start;
-        
-            animate();
-        
-        });
-        
-        
-        
-        //set window.requestAnimationFrame
-        
-        (function (w, r) {
-        
-            w['r'+r] = w['r'+r] || w['webkitR'+r] || w['mozR'+r] || w['msR'+r] || w['oR'+r] || function(c){ w.setTimeout(c, 1000 / 60); };
-        
-        })(window, 'equestAnimationFrame');
-        
-        </script> -->
-
-
+<div id="container">
+    <span class='zi' style='color:#fff;
+    position: absolute;
+    top:300px;
+    left:600px;'>先赶紧滑动鼠标吧！</span>
+</div>
+<embed src="music/dream.mp3" hidden="true"/>
+<script>
+$(function () {
     
+    setTimeout(function(){
+        
+        $('.zi')[0].innerHTML='想看里面内容赶紧滑动鼠标';
+    },2000);
+    setTimeout(function(){
+    
+        $('.zi')[0].innerHTML='滑的再快点';
+    },10000);
+    setTimeout(function(){
+      
+        $('.zi')[0].innerHTML='继续保持';
+    },13000);
+    setTimeout(function(){
+        
+        $('.zi')[0].innerHTML='倒计时开始，不要停';
+    },15000);
+    setTimeout(function(){
+       
+        $('.zi')[0].innerHTML='啊哈，其实不用滑的啦，嘿嘿。。';
+    },20000);
+    setTimeout(function(){
+        window.location.href='./happybirthday.html'
+    },22000);
+})
 
+var Sketch = function() {
+    function e(e) {
+        e = n(e || {}, l);
+        var t = "sketch-" + r++,
+            o = e.hasOwnProperty("canvas"),
+            u = o ? e.canvas : document.createElement("canvas");
+        switch (e.type) {
+            case m:
+                try {
+                    s = u.getContext("webgl", e)
+                } catch (d) {}
+                try {
+                    s = s || u.getContext("experimental-webgl", e)
+                } catch (d) {}
+                if (!s) throw "WebGL not supported";
+                break;
+            case c:
+                try {
+                    s = u.getContext("2d", e)
+                } catch (d) {}
+                if (!s) throw "Canvas not supported";
+                break;
+            default:
+                u = s = document.createElement("div")
+        }
+        return s.canvas = u, u.className = "sketch", o ? e.autoresize = !1 : (e.container.appendChild(u), e.hasOwnProperty("autoresize") || (e.autoresize = l.autoresize), u.id = t), n(self, g), n(s, e), n(s, p), a(), e.autoresize && i(), w.push(s), s.autostart && setTimeout(s.start, 0), s
+    }
+
+    function n(e, n) {
+        for (var t in n) e.hasOwnProperty(t) || (e[t] = n[t]);
+        return e
+    }
+
+    function t(e) {
+        function n(e, n) {
+            return function() {
+                e.call(n, arguments)
+            }
+        }
+        var t = {};
+        for (var o in e) t[o] = "function" == typeof e[o] ? n(e[o], e) : e[o];
+        return t
+    }
+
+    function o(e, n) {
+        e.length = 0;
+        for (var t = 0, o = n.length; o > t; t++) e[t] = n[t];
+        return e
+    }
+
+    function a() {
+        function e(e) {
+            return M[e] || String.fromCharCode(e)
+        }
+
+        function n(e) {
+            s.mouse.ox = s.mouse.x, s.mouse.oy = s.mouse.y, s.mouse.x = e.x, s.mouse.y = e.y, s.mouse.dx = s.mouse.x - s.mouse.ox, s.mouse.dy = s.mouse.y - s.mouse.oy
+        }
+
+        function a(e) {
+            var n, o = t(e);
+            o.original = e;
+            for (var a = s.canvas, u = 0, i = 0; a; a = a.offsetParent) u += a.offsetLeft, i += a.offsetTop;
+            if (o.touches && o.touches.length)
+                for (var r, c = o.touches.length - 1; c >= 0; c--) r = o.touches[c], r.x = r.pageX - u, r.y = r.pageY - i, n = A[c] || r, r.dx = r.x - n.x, r.dy = r.y - n.x, r.ox = n.x, r.oy = n.y, A[c] = t(r);
+            else o.x = o.pageX - u, o.y = o.pageY - i, n = A.mouse || o, o.dx = o.x - n.x, o.dy = o.y - n.y, o.ox = n.x, o.oy = n.y, A.mouse = o;
+            return o
+        }
+
+        function u(e) {
+            e.preventDefault(), e = a(e), o(s.touches, e.touches), n(s.touches[0]), s.touchstart && s.touchstart(e), s.mousedown && s.mousedown(e)
+        }
+
+        function r(e) {
+            e = a(e), o(s.touches, e.touches), n(s.touches[0]), s.touchmove && s.touchmove(e), s.mousemove && s.mousemove(e)
+        }
+
+        function c(e) {
+            if (e = a(e), e.touches.length)
+                for (var n in A) e.touches[n] || A[n];
+            else A = {};
+            s.touchend && s.touchend(e), s.mouseup && s.mouseup(e)
+        }
+
+        function m(e) {
+            e = a(e), s.mouseover && s.mouseover(e)
+        }
+
+        function d(e) {
+            e = a(e), s.dragging || (x(s.canvas, "mousemove", h), x(s.canvas, "mouseup", v), y(document, "mousemove", h), y(document, "mouseup", v), s.dragging = !0), o(s.touches, [e]), s.touchstart && s.touchstart(e), s.mousedown && s.mousedown(e)
+        }
+
+        function h(e) {
+            e = a(e), n(e), o(s.touches, [e]), s.touchmove && s.touchmove(e), s.mousemove && s.mousemove(e)
+        }
+
+        function f(e) {
+            e = a(e), s.mouseout && s.mouseout(e)
+        }
+
+        function v(e) {
+            e = a(e), s.dragging && (x(document, "mousemove", h), x(document, "mouseup", v), y(s.canvas, "mousemove", h), y(s.canvas, "mouseup", v), s.dragging = !1), A.mouse, s.touchend && s.touchend(e), s.mouseup && s.mouseup(e)
+        }
+
+        function w(e) {
+            e = a(e), s.click && s.click(e)
+        }
+
+        function l(n) {
+            s.keys[e(n.keyCode)] = !0, s.keys[n.keyCode] = !0, s.keydown && s.keydown(n)
+        }
+
+        function g(n) {
+            s.keys[e(n.keyCode)] = !1, s.keys[n.keyCode] = !1, s.keyup && s.keyup(n)
+        }
+        var M = {
+            8: "BACKSPACE",
+            9: "TAB",
+            13: "ENTER",
+            16: "SHIFT",
+            27: "ESCAPE",
+            32: "SPACE",
+            37: "LEFT",
+            38: "UP",
+            39: "RIGHT",
+            40: "DOWN"
+        };
+        for (var k in M) p.keys[M[k]] = !1;
+        var A = {};
+        y(s.canvas, "touchstart", u), y(s.canvas, "touchmove", r), y(s.canvas, "touchend", c), y(s.canvas, "mouseover", m), y(s.canvas, "mousedown", d), y(s.canvas, "mousemove", h), y(s.canvas, "mouseout", f), y(s.canvas, "mouseup", v), y(s.canvas, "click", w), y(document, "keydown", l), y(document, "keyup", g), y(window, "resize", i)
+    }
+
+    function u() {
+        if (!h) {
+            var e = Date.now();
+            s.dt = e - s.now, s.millis += s.dt, s.now = e, s.update && s.update(s.dt), s.autoclear && s.clear(), s.draw && s.draw(s)
+        }
+        h = ++h % s.interval, f = requestAnimationFrame(u)
+    }
+
+    function i() {
+        if (s.autoresize) {
+            var e = s.type === d ? s.style : s.canvas;
+            s.fullscreen ? (s.height = e.height = window.innerHeight, s.width = e.width = window.innerWidth) : (e.height = s.height, e.width = s.width), s.resize && s.resize()
+        }
+    }
+    var s, r = 0,
+        c = "canvas",
+        m = "web-gl",
+        d = "dom",
+        h = 0,
+        f = -1,
+        v = {},
+        w = [],
+        l = {
+            fullscreen: !0,
+            autostart: !0,
+            autoclear: !0,
+            autopause: !0,
+            autoresize: !0,
+            container: document.body,
+            interval: 1,
+            type: c
+        },
+        g = {
+            PI: Math.PI,
+            TWO_PI: 2 * Math.PI,
+            HALF_PI: Math.PI / 2,
+            QUARTER_PI: Math.PI / 4,
+            abs: Math.abs,
+            acos: Math.acos,
+            asin: Math.asin,
+            atan2: Math.atan2,
+            atan: Math.atan,
+            ceil: Math.ceil,
+            cos: Math.cos,
+            exp: Math.exp,
+            floor: Math.floor,
+            log: Math.log,
+            max: Math.max,
+            min: Math.min,
+            pow: Math.pow,
+            round: Math.round,
+            sin: Math.sin,
+            sqrt: Math.sqrt,
+            tan: Math.tan,
+            random: function(e, n) {
+                return e && "number" == typeof e.length && e.length ? e[Math.floor(Math.random() * e.length)] : ("number" != typeof n && (n = e || 1, e = 0), e + Math.random() * (n - e))
+            }
+        },
+        p = {
+            millis: 0,
+            now: 0 / 0,
+            dt: 0 / 0,
+            keys: {},
+            mouse: {
+                x: 0,
+                y: 0,
+                ox: 0,
+                oy: 0,
+                dx: 0,
+                dy: 0
+            },
+            touches: [],
+            initialized: !1,
+            dragging: !1,
+            running: !1,
+            start: function() {
+                s.running || (s.setup && !s.initialized && (s.autopause && (y(window, "focus", s.start), y(window, "blur", s.stop)), s.setup()), s.initialized = !0, s.running = !0, s.now = Date.now(), u())
+            },
+            stop: function() {
+                cancelAnimationFrame(f), s.running = !1
+            },
+            toggle: function() {
+                (s.running ? s.stop : s.start)()
+            },
+            clear: function() {
+                s.canvas && (s.canvas.width = s.canvas.width)
+            },
+            destroy: function() {
+                var e, n, t, o, a, u;
+                w.splice(w.indexOf(s), 1), s.stop();
+                for (n in v) {
+                    for (t = v[n], a = 0, u = t.length; u > a; a++) e = t[a], x(e.el, n, e.fn);
+                    v[n]
+                }
+                s.container.removeChild(s.canvas);
+                for (o in s) s.hasOwnProperty(o) && s[o]
+            }
+        },
+        y = function() {
+            function e(e, n, t) {
+                v[n] || (v[n] = []), v[n].push({
+                    el: e,
+                    fn: t
+                })
+            }
+            return window.addEventListener ? function(n, t, o) {
+                n.addEventListener(t, o, !1), e(n, t, o)
+            } : window.attachEvent ? function(n, t, o) {
+                n.attachEvent("on" + t, o), e(n, t, o)
+            } : function(n, t, o) {
+                n["on" + t] = o, e(n, t, o)
+            }
+        }(),
+        x = function() {
+            function e(e, n, t) {
+                if (v[n])
+                    for (var o, a = v[n].length - 1; a >= 0; a--) o = v[n][a], o.el === e && o.fn === t && v[n].splice(a, 1)
+            }
+            return window.removeEventListener ? function(n, t, o) {
+                n.removeEventListener(t, o, !1), e(n, t, o)
+            } : window.detachEvent ? function(n, t, o) {
+                n.detachEvent("on" + t, o), e(n, t, o)
+            } : (el["on" + ev] = null, e(el, ev, fn), void 0)
+        }();
+    return {
+        CANVAS: c,
+        WEB_GL: m,
+        DOM: d,
+        instances: w,
+        create: e
+    }
+}();
+Date.now || (Date.now = function() {
+        return +new Date
+    }),
+    function() {
+        for (var e = 0, n = ["ms", "moz", "webkit", "o"], t = 0; n.length > t && !window.requestAnimationFrame; ++t) window.requestAnimationFrame = window[n[t] + "RequestAnimationFrame"], window.cancelAnimationFrame = window[n[t] + "CancelAnimationFrame"] || window[n[t] + "CancelRequestAnimationFrame"];
+        window.requestAnimationFrame || (window.requestAnimationFrame = function(n) {
+            var t = Date.now(),
+                o = Math.max(0, 16 - (t - e)),
+                a = window.setTimeout(function() {
+                    n(t + o)
+                }, o);
+            return e = t + o, a
+        }), window.cancelAnimationFrame || (window.cancelAnimationFrame = function(e) {
+            clearTimeout(e)
+        })
+    }();
+
+function Particle(x, y, radius) {
+    this.init(x, y, radius);
+}
+
+Particle.prototype = {
+
+    init: function(x, y, radius) {
+
+        this.alive = true;
+
+        this.radius = radius || 10;
+        this.wander = 0.15;
+        this.theta = random(TWO_PI);
+        this.drag = 0.92;
+        this.color = '#fff';
+
+        this.x = x || 0.0;
+        this.y = y || 0.0;
+
+        this.vx = 0.0;
+        this.vy = 0.0;
+    },
+
+    move: function() {
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+        this.vx *= this.drag;
+        this.vy *= this.drag;
+
+        this.theta += random(-0.5, 0.5) * this.wander;
+        this.vx += sin(this.theta) * 0.1;
+        this.vy += cos(this.theta) * 0.1;
+
+        this.radius *= 0.96;
+        this.alive = this.radius > 0.5;
+    },
+
+    draw: function(ctx) {
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, TWO_PI);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+};
+
+// ----------------------------------------
+// Example
+// ----------------------------------------
+
+var MAX_PARTICLES = 280;
+var COLOURS = ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423'];
+
+var particles = [];
+var pool = [];
+
+var demo = Sketch.create({
+    container: document.getElementById('container')
+});
+
+demo.setup = function() {
+
+    // Set off some initial particles.
+    var i, x, y;
+
+    for (i = 0; i < 20; i++) {
+        x = (demo.width * 0.5) + random(-100, 100);
+        y = (demo.height * 0.5) + random(-100, 100);
+        demo.spawn(x, y);
+    }
+};
+
+demo.spawn = function(x, y) {
+
+    if (particles.length >= MAX_PARTICLES)
+        pool.push(particles.shift());
+
+    particle = pool.length ? pool.pop() : new Particle();
+    particle.init(x, y, random(5, 40));
+
+    particle.wander = random(0.5, 2.0);
+    particle.color = random(COLOURS);
+    particle.drag = random(0.9, 0.99);
+
+    theta = random(TWO_PI);
+    force = random(2, 8);
+
+    particle.vx = sin(theta) * force;
+    particle.vy = cos(theta) * force;
+
+    particles.push(particle);
+}
+
+demo.update = function() {
+
+    var i, particle;
+
+    for (i = particles.length - 1; i >= 0; i--) {
+
+        particle = particles[i];
+
+        if (particle.alive) particle.move();
+        else pool.push(particles.splice(i, 1)[0]);
+    }
+};
+
+demo.draw = function() {
+
+    demo.globalCompositeOperation = 'lighter';
+
+    for (var i = particles.length - 1; i >= 0; i--) {
+        particles[i].draw(demo);
+    }
+};
+
+demo.mousemove = function() {
+
+    var particle, theta, force, touch, max, i, j, n;
+
+    for (i = 0, n = demo.touches.length; i < n; i++) {
+
+        touch = demo.touches[i], max = random(1, 4);
+        for (j = 0; j < max; j++) demo.spawn(touch.x, touch.y);
+    }
+};
+</script>
+
+</body>
 </html>
